@@ -1,37 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { App } from './App';
+import { SnackbarProvider } from 'notistack';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
-import { counter } from './reducers/counter';
-import rootSaga from './sagas/counter-sagas';
+import rootReducer from './reducers';
+import rootSaga from './sagas';
 
 import { Container } from '@material-ui/core';
 
 import { ThemeProvider } from '@material-ui/styles';
 import outerTheme from './theme';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { HelmetProvider } from 'react-helmet-async';
 
 const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(
-  counter,
-  applyMiddleware(sagaMiddleware),
-);
-
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(rootSaga);
 
 function render() {
   ReactDOM.render(
-    <ThemeProvider theme={outerTheme}>
-      <Container maxWidth={false}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </Container>
-    </ThemeProvider>,
+    (
+      <HelmetProvider>
+        <ThemeProvider theme={outerTheme}>
+          <Container maxWidth={false}>
+            <Provider store={store}>
+              <SnackbarProvider>
+                <App />
+              </SnackbarProvider>
+            </Provider>
+          </Container>
+        </ThemeProvider>
+      </HelmetProvider>
+    ),
     document.getElementById('root') as HTMLElement,
   );
 }

@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={classes.footer}>
       <Container maxWidth={false}>
-        <Typography variant="body1">Footer</Typography>
+        <Typography variant="body1" align="center">Nwave &copy; Copyright {new Date().getFullYear()}</Typography>
       </Container>
     </footer>
   );

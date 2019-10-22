@@ -1,7 +1,9 @@
 import Footer from './Footer/FooterComponent';
 import Header from './Header/HeaderComponent';
-import { Test } from './Test/TestComponent';
+import Notifier from './Notifier/Notifier';
 
-export { Footer };
-export { Header };
-export { Test };
+export {
+  Footer,
+  Header,
+  Notifier
+};

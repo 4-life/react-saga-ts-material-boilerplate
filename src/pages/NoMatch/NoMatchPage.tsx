@@ -1,8 +1,7 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 // components
-import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 
 const NoMatchPage: React.FC = () => {
@@ -13,10 +12,9 @@ const NoMatchPage: React.FC = () => {
         <title>Not found</title>
       </Helmet>
 
-      <Typography variant="h1">
+      <Typography variant="h2">
         Page not found
       </Typography>
-      <Link to={'/'}>Home</Link>
     </div>
   );
 };

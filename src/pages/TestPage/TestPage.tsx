@@ -3,9 +3,10 @@ import { Helmet } from 'react-helmet-async';
 
 // components
 import Typography from '@material-ui/core/Typography';
+import { FlashOff } from '@material-ui/icons';
 
 // styles
-import useStyles from './HomeStyles';
+import useStyles from './TestPageStyles';
 
 const Home: React.FC = () => {
   const classes = {
@@ -15,11 +16,11 @@ const Home: React.FC = () => {
   return(
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Test</title>
       </Helmet>
 
-      <Typography variant="h3" className={classes.notImplemented}>
-        Home page
+      <Typography variant="overline" className={classes.notImplemented}>
+        <FlashOff /> Page is not implemented
       </Typography>
     </>
   );

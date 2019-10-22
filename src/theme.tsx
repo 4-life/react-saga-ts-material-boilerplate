@@ -21,15 +21,30 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 }
 
 const outerTheme = createMuiTheme({
-  drawerWidth: 240,
   palette: {
     primary: {
-      main: '#ccc',
+      main: '#dfbe2f',
+    },
+    secondary: {
+      main: '#02aed6',
     },
   },
   status: {
     danger: orange[500],
-  },
+  }
+});
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const getTableTheme = () => (createMuiTheme as any)({
+  ...outerTheme,
+  overrides: {
+    MUIDataTableBodyCell: {
+      root: {
+        padding: '10px',
+        lineHeight: 1
+      }
+    }
+  }
 });
 
 export default outerTheme;

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import Typography from '@material-ui/core/Typography';
 
 // styles
-import useStyles from './HomeStyles';
+import useStyles from './SubPageStyles';
 
 const Home: React.FC = () => {
   const classes = {
@@ -15,11 +15,11 @@ const Home: React.FC = () => {
   return(
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Home | SubPage</title>
       </Helmet>
 
       <Typography variant="h3" className={classes.notImplemented}>
-        Home page
+        SubPage
       </Typography>
     </>
   );

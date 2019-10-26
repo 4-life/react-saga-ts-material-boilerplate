@@ -1,1 +1,23 @@
-{}
+{
+  "deviceManagement": {
+    "device": {
+      "sectionTitle": "Device {{device_id}}",
+      "general": {
+        "sectionTitle": "Device general information",
+        "deviceId": "Device ID",
+        "firmware": "Firmware",
+        "protocol": "Protocol",
+        "deviceType": {
+          "label": "Device type",
+          "options": {
+            "parking_sensor": "Parking sensor"
+          }
+        },
+        "activationStatus": "Activation status",
+        "damagedStatus": "Damaged status",
+        "encryptionKeys": "Encryption keys",
+        "owner": "Owner"
+      }
+    }
+  }
+}

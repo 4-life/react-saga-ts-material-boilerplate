@@ -1,8 +1,9 @@
 import {
+  Couple,
   Home,
   NoMatch,
   SubPage,
-  TestPage
+  TestPage,
 } from './pages';
 import { ComponentType } from 'react';
 
@@ -46,6 +47,12 @@ const Routes: SubRouter[] = [
     label: 'Test Page',
     main: TestPage,
     routes: []
+  },
+  {
+    path: '/couple',
+    label: 'Couple',
+    main: Couple,
+    routes: [],
   },
   {
     main: NoMatch,

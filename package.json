@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.28",
     "@material-ui/pickers": "^3.2.1",
+    "clsx": "^1.0.4",
     "material-ui-popup-state": "^1.4.1",
     "moment": "^2.24.0",
     "mui-datatables": "^2.6.4",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/faker": "^4.1.6",
     "@types/jest": "^24.0.16",
     "@types/node": "^12.6.6",
     "@types/prop-types": "^15.7.1",
@@ -64,6 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "faker": "^4.1.0",
     "tape": "^4.11.0",
     "typescript": "^3.5.3"
   }

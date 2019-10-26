@@ -1,3 +1,4 @@
+import DateFnsUtils from '@date-io/date-fns';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
@@ -11,6 +12,7 @@ import rootReducer from './reducers';
 import rootSaga from './sagas';
 
 import { Container } from '@material-ui/core';
+import MuiPickersUtilsProvider from '@material-ui/pickers/MuiPickersUtilsProvider';
 
 import { ThemeProvider } from '@material-ui/styles';
 import outerTheme from './theme';
@@ -26,13 +28,15 @@ function render() {
     (
       <HelmetProvider>
         <ThemeProvider theme={outerTheme}>
-          <Container maxWidth={false}>
-            <Provider store={store}>
-              <SnackbarProvider>
-                <App />
-              </SnackbarProvider>
-            </Provider>
-          </Container>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Container maxWidth={false}>
+              <Provider store={store}>
+                <SnackbarProvider>
+                  <App />
+                </SnackbarProvider>
+              </Provider>
+            </Container>
+          </MuiPickersUtilsProvider>
         </ThemeProvider>
       </HelmetProvider>
     ),

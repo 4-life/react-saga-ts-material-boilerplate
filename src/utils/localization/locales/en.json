@@ -17,6 +17,17 @@
         "damagedStatus": "Damaged status",
         "encryptionKeys": "Encryption keys",
         "owner": "Owner"
+      },
+      "business": {
+        "sectionTitle": "Device business information",
+        "lastUpdateTime": "Last update time",
+        "lastFirmwareUpdateTime": "Last firmware update time",
+        "productionBatchId": "Production batch ID",
+        "assemblingTime": "Assembling time",
+        "purchaseTime": "Purchase time",
+        "warrantyExpirationTime": "Warranty expiration time",
+        "lastDisablingTime": "Last disabling time",
+        "lastDisablingReason": "Last disabling reason"
       }
     }
   }

@@ -34,6 +34,11 @@ const DEVICE = {
   warranty_expiration_time: faker.date.past().toISOString(),
   last_disabling_time: faker.date.past().toISOString(),
   last_disabling_reason: faker.lorem.words(20),
+
+  // monitoring information
+  last_received_message_time: faker.date.past().toISOString(),
+  number_of_open_incidents: faker.random.number({ min: 0, max: 10, precision: 1 }),
+  current_connectivity: faker.random.number({ min: 0, max: 100, precision: 1 }),
 };
 
 const CouplePage: React.FC = () => {

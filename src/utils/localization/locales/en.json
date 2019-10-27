@@ -28,6 +28,13 @@
         "warrantyExpirationTime": "Warranty expiration time",
         "lastDisablingTime": "Last disabling time",
         "lastDisablingReason": "Last disabling reason"
+      },
+      "monitoring": {
+        "sectionTitle": "Device monitoring",
+        "lastReceivedMessageTime": "Last received message time",
+        "numberOfOpenIncidents": "Number of open incidents",
+        "currentConnectivity": "Current connectivity",
+        "connectivityHistory": "Connectivity history"
       }
     }
   }

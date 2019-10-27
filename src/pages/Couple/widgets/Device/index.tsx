@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import DeviceGeneralInfo from '../DeviceGeneralInfo';
 import DeviceBusinessInfo from '../DeviceBusinessInfo';
+import DeviceMonitoring from '../DeviceMonitoring';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
@@ -43,6 +44,8 @@ const Device: React.FC<Props> = (props) => {
         device={props.device}
         idPrefix={combineIds(props.idPrefix, 'business')}
       />
+
+      <DeviceMonitoring device={props.device} />
     </Paper>
   );
 };

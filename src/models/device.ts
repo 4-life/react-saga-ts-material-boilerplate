@@ -18,4 +18,9 @@ export interface Device {
   warranty_expiration_time: string,
   last_disabling_time: string,
   last_disabling_reason: string,
+
+  // monitoring information
+  last_received_message_time: string,
+  number_of_open_incidents: number,
+  current_connectivity: number,
 }

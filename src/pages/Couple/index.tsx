@@ -7,11 +7,12 @@ import { Helmet } from 'react-helmet-async';
 import Grid from '@material-ui/core/Grid';
 
 import Device from './widgets/Device';
+import Place from './widgets/Place';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     block: {
-      flexGrow: 1,
+      flex: 1,
     },
   }),
 );
@@ -41,6 +42,18 @@ const DEVICE = {
   current_connectivity: faker.random.number({ min: 0, max: 100, precision: 1 }),
 };
 
+const PLACE = {
+  id: faker.random.number(),
+  level: faker.random.number({ min: -5, max: 10, precision: 1 }),
+  lat: parseFloat(faker.address.latitude()),
+  lon: parseFloat(faker.address.longitude()),
+  creation_date: faker.date.past(),
+  group_id: faker.random.number(),
+  group_inner_id: faker.random.number(),
+  custom_id: faker.random.alphaNumeric(8),
+  network_id: faker.random.uuid(),
+};
+
 const CouplePage: React.FC = () => {
   const layoutCss = useStyles();
 
@@ -54,7 +67,9 @@ const CouplePage: React.FC = () => {
         <Grid className={layoutCss.block} item>
           <Device device={DEVICE} idPrefix="device" />
         </Grid>
-        <Grid className={layoutCss.block} item />
+        <Grid className={layoutCss.block} item>
+          <Place place={PLACE} idPrefix="place" />
+        </Grid>
       </Grid>
     </>
   );

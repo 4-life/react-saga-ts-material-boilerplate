@@ -47,6 +47,9 @@
           }
         }
       }
+    },
+    "place": {
+      "sectionTitle": "Place {{id}}"
     }
   }
 }

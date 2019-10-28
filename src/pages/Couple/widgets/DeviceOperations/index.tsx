@@ -3,12 +3,21 @@ import faker from 'faker';
 import React from 'react';
 
 import { useLocalization } from '../../../../utils/localization';
+import {
+  default as dangerTheme,
+  DANGER_PALETTE_NAME,
+} from '../../../../styles/themes/danger';
+import {
+  default as warningTheme,
+  WARNING_PALETTE_NAME,
+} from '../../../../styles/themes/warning';
 
 // components
 import Button from '@material-ui/core/Button';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -47,9 +56,15 @@ const DeviceOperations: React.FC<Props> = () => {
 
       <ExpansionPanelDetails>
         <Grid alignItems="center" container>
-          <Button className={infoCss.field} variant="contained">
-            {tOperations.unbind}
-          </Button>
+          <ThemeProvider theme={dangerTheme}>
+            <Button
+              className={infoCss.field}
+              color={DANGER_PALETTE_NAME}
+              variant="contained"
+            >
+              {tOperations.unbind}
+            </Button>
+          </ThemeProvider>
 
           <Divider
             className={operationsCss.divider}
@@ -65,9 +80,15 @@ const DeviceOperations: React.FC<Props> = () => {
             items={ITEMS}
           />
 
-          <Button className={infoCss.field} variant="contained">
-            {tOperations.replace.action}
-          </Button>
+          <ThemeProvider theme={warningTheme}>
+            <Button
+              className={infoCss.field}
+              color={WARNING_PALETTE_NAME}
+              variant="contained"
+            >
+              {tOperations.replace.action}
+            </Button>
+          </ThemeProvider>
         </Grid>
       </ExpansionPanelDetails>
     </ExpansionPanel>

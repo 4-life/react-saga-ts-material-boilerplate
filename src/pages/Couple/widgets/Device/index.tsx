@@ -5,16 +5,13 @@ import { combineIds } from '../../../../utils/ids';
 import { resolveArgs, useLocalization } from '../../../../utils/localization';
 
 // components
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import DeviceGeneralInfo from '../DeviceGeneralInfo';
 import DeviceBusinessInfo from '../DeviceBusinessInfo';
 import DeviceMonitoring from '../DeviceMonitoring';
+import DeviceOperations from '../DeviceOperations';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
@@ -39,6 +36,8 @@ const Device: React.FC<Props> = (props) => {
         device={props.device}
         idPrefix={combineIds(props.idPrefix, 'general')}
       />
+
+      <DeviceOperations />
 
       <DeviceBusinessInfo
         device={props.device}

@@ -35,6 +35,17 @@
         "numberOfOpenIncidents": "Number of open incidents",
         "currentConnectivity": "Current connectivity",
         "connectivityHistory": "Connectivity history"
+      },
+      "operations": {
+        "sectionTitle": "Device operations",
+        "unbind": "Unbind",
+        "replace": {
+          "action": "Replace",
+          "deviceIdField": {
+            "label": "Device ID",
+            "placeholder": "Start typing the device ID..."
+          }
+        }
       }
     }
   }

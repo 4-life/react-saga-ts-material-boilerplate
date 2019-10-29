@@ -2,8 +2,8 @@ import {
   Action,
   FETCH_PLACES,
   FETCH_PLACES_SUCCESS
-} from '../actions/dummy-data';
-import { Place } from '../models';
+} from '../../actions/dummy-data';
+import { Place } from '../../models';
 
 export interface State {
   places: Place[];
@@ -25,3 +25,5 @@ export const reducer = (state: State = initState, action: Action): State => {
       return { ...state };
   }
 };
+
+export const name = 'places';

@@ -49,7 +49,22 @@
       }
     },
     "place": {
-      "sectionTitle": "Place {{id}}"
+      "sectionTitle": "Place {{id}}",
+      "general": {
+        "sectionTitle": "Place general information",
+        "geo": {
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "sectionTitle": "Geo"
+        },
+        "level": "Level",
+        "creationDate": "Creation date",
+        "groupInnerId": "Group inner ID",
+        "group": "Group",
+        "batch": "Batch",
+        "customId": "Custom ID",
+        "networkId": "Network ID"
+      }
     }
   }
 }

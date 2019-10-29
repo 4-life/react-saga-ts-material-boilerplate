@@ -8,6 +8,7 @@ import { resolveArgs, useLocalization } from '../../../../utils/localization';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import DeviceBinding from '../DeviceBinding';
 import DeviceGeneralInfo from '../DeviceGeneralInfo';
 import DeviceBusinessInfo from '../DeviceBusinessInfo';
 import DeviceMonitoring from '../DeviceMonitoring';
@@ -17,14 +18,19 @@ import DeviceOperations from '../DeviceOperations';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device: DeviceModel,
+  device?: DeviceModel,
   idPrefix?: string,
 };
 
 const Device: React.FC<Props> = (props) => {
-  const { device } = props;
   const infoCss = useInfoBlockStyles();
   const t = useLocalization();
+
+  const { device } = props;
+
+  if (!device) {
+    return <DeviceBinding />;
+  }
 
   return (
     <Paper>
@@ -33,18 +39,18 @@ const Device: React.FC<Props> = (props) => {
       </Typography>
 
       <DeviceGeneralInfo
-        device={props.device}
+        device={device}
         idPrefix={combineIds(props.idPrefix, 'general')}
       />
 
       <DeviceOperations />
 
       <DeviceBusinessInfo
-        device={props.device}
+        device={device}
         idPrefix={combineIds(props.idPrefix, 'business')}
       />
 
-      <DeviceMonitoring device={props.device} />
+      <DeviceMonitoring device={device} />
     </Paper>
   );
 };

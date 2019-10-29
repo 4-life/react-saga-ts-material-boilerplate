@@ -1,4 +1,4 @@
-import { orange, red } from '@material-ui/core/colors';
+import { green, orange, red } from '@material-ui/core/colors';
 import { PaletteColorOptions } from '@material-ui/core/styles/createPalette';
 
 export const warning: PaletteColorOptions = {
@@ -12,5 +12,12 @@ export const danger: PaletteColorOptions = {
   light: red[200],
   main: red[500],
   dark: red[700],
+  contrastText: '#fff',
+};
+
+export const success: PaletteColorOptions = {
+  light: green[200],
+  main: green[500],
+  dark: green[700],
   contrastText: '#fff',
 };

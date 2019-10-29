@@ -46,6 +46,14 @@
             "placeholder": "Start typing the device ID..."
           }
         }
+      },
+      "binding": {
+        "sectionTitle": "Bind device",
+        "deviceIdField": {
+          "label": "Device ID",
+          "placeholder": "Start typing the device ID..."
+        },
+        "action": "Bind"
       }
     },
     "place": {

@@ -72,6 +72,13 @@
         "batch": "Batch",
         "customId": "Custom ID",
         "networkId": "Network ID"
+      },
+      "binding": {
+        "sectionTitle": "Bind place",
+        "batch": "Batch",
+        "group": "Group",
+        "place": "Place",
+        "action": "Bind"
       }
     }
   }

@@ -2,6 +2,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 export const useInfoBlockStyles = makeStyles((theme: Theme) =>
   createStyles({
+    actions: {
+      alignSelf: 'flex-end',
+    },
     button: {
       margin: theme.spacing(1),
     },

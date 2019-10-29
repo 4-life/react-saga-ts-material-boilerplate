@@ -8,20 +8,26 @@ import { resolveArgs, useLocalization } from '../../../../utils/localization';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import PlaceBinding from '../PlaceBinding';
 import PlaceGeneralInfo from '../PlaceGeneralInfo';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  place: PlaceModel,
+  place?: PlaceModel,
   idPrefix?: string,
 };
 
 const Place: React.FC<Props> = (props) => {
-  const { place } = props;
   const infoCss = useInfoBlockStyles();
   const t = useLocalization();
+
+  const { place } = props;
+
+  if (!place) {
+    return <PlaceBinding />;
+  }
 
   return (
     <Paper>

@@ -5,15 +5,20 @@ import {
   FETCH_DATA_FAILED,
 } from '../../actions/dummy-data';
 import { Place } from '../../models';
+import { keyBy } from '../../utils/ds/array';
+
+interface Places {
+  readonly [id: string]: Place,
+}
 
 export interface State {
-  readonly entries: ReadonlyArray<Place>;
+  readonly entries: Readonly<Places>;
   readonly error: string | null;
   readonly fetching: boolean;
 }
 
 const initState: State = {
-  entries: [],
+  entries: {},
   error: null,
   fetching: false,
 };
@@ -27,7 +32,10 @@ export const reducer = (state: State = initState, action: Action): State => {
     case FETCH_PLACES_SUCCESS: {
       return {
         ...state,
-        entries: action.payload,
+        entries: {
+          ...state.entries,
+          ...keyBy(action.payload, 'id'),
+        },
         error: null,
         fetching: false,
       };

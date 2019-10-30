@@ -3,6 +3,11 @@ import Routes from './Routes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RootState } from './reducers';
 import { connect } from 'react-redux';
+
+import {
+  isFetching as isDeviceManagementFetching,
+} from './selectors/device-management';
+
 // components
 import { Footer, Header, Notifier } from './components';
 import { LinearProgress, Fade } from '@material-ui/core';
@@ -15,7 +20,7 @@ interface Props {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  isFetching: state.deviceManagement.isFetching
+  isFetching: isDeviceManagementFetching(state)
 });
 
 const Component = (props: Props) => {

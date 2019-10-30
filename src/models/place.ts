@@ -2,7 +2,7 @@ export interface Place {
   /**
    * Place Primary Key
    */
-  id?: number;
+  id: number;
   level?: number;
   lat: number;
   lon: number;

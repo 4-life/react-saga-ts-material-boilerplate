@@ -20,16 +20,18 @@ const initState: State = {
 
 export const reducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
-    case FETCH_PLACES:
+    case FETCH_PLACES: {
       return { ...state, fetching: true };
+    }
 
-    case FETCH_PLACES_SUCCESS:
+    case FETCH_PLACES_SUCCESS: {
       return {
         ...state,
         entries: action.payload,
         error: null,
         fetching: false,
       };
+    }
 
     case FETCH_DATA_FAILED: {
       return {
@@ -39,8 +41,9 @@ export const reducer = (state: State = initState, action: Action): State => {
       };
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 

@@ -8,6 +8,6 @@ export interface State {
 
 export const name = 'deviceManagement';
 
-export const reducer = combineReducers({
+export const reducer = combineReducers<State>({
   [places.name]: places.reducer,
 });

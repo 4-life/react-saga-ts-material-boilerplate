@@ -9,7 +9,7 @@ export interface RootState {
   user: userProfiletState;
 }
 
-export default combineReducers({
+export default combineReducers<RootState>({
   notifications: NotifierStateReducer,
   [deviceManagement.name]: deviceManagement.reducer,
   user: userProfileReducer

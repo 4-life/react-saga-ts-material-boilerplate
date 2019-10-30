@@ -1,3 +1,4 @@
+import { FetchDevices } from '../actions/device-management/devices';
 import { ApiResponse } from '../models';
 import { GetPlaces } from '../actions/dummy-data';
 
@@ -13,7 +14,7 @@ const urls = {
   })
 };
 
-export const fetchDevices = (): Promise<ApiResponse> => {
+export const fetchDevices = (action: FetchDevices): Promise<ApiResponse> => {
   return fetch(urls.findDevices)
     .catch((err) => err);
 };

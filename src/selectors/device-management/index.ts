@@ -1,6 +1,7 @@
 import { RootState as State } from '../../reducers';
+import { areDevicesLoading } from './devices';
 import { arePlacesLoading } from './places';
 
 export function isFetching(state: State) {
-  return arePlacesLoading(state);
+  return areDevicesLoading(state) || arePlacesLoading(state);
 }

@@ -40,7 +40,7 @@ export const reducer = (state: State = initState, action: Action): State => {
     }
 
     default:
-      return { ...state };
+      return state;
   }
 };
 

@@ -1,7 +1,8 @@
 import {
   Action,
   FETCH_PLACES,
-  FETCH_PLACES_SUCCESS
+  FETCH_PLACES_SUCCESS,
+  FETCH_DATA_FAILED,
 } from '../../actions/dummy-data';
 import { Place } from '../../models';
 
@@ -21,8 +22,23 @@ export const reducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
     case FETCH_PLACES:
       return { ...state, fetching: true };
+
     case FETCH_PLACES_SUCCESS:
-      return { ...state, entries: action.payload };
+      return {
+        ...state,
+        entries: action.payload,
+        error: null,
+        fetching: false,
+      };
+
+    case FETCH_DATA_FAILED: {
+      return {
+        ...state,
+        error: action.error,
+        fetching: false,
+      };
+    }
+
     default:
       return { ...state };
   }

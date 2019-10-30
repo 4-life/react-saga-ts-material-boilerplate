@@ -6,13 +6,15 @@ import {
 import { Place } from '../../models';
 
 export interface State {
-  places: Place[];
-  error?: string;
-  fetching?: boolean;
+  readonly entries: ReadonlyArray<Place>;
+  readonly error: string | null;
+  readonly fetching: boolean;
 }
 
 const initState: State = {
-  places: []
+  entries: [],
+  error: null,
+  fetching: false,
 };
 
 export const reducer = (state: State = initState, action: Action): State => {
@@ -20,7 +22,7 @@ export const reducer = (state: State = initState, action: Action): State => {
     case FETCH_PLACES:
       return { ...state, fetching: true };
     case FETCH_PLACES_SUCCESS:
-      return { ...state, places: action.payload };
+      return { ...state, entries: action.payload };
     default:
       return { ...state };
   }

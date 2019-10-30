@@ -15,5 +15,5 @@ export function arePlacesLoading(state: State) {
 
 export function getPlace(placeId: Place['id'], state: State) {
   const placesState = getPlacesState(state);
-  return placesState.places.find(place => place.id === placeId);
+  return placesState.entries.find(place => place.id === placeId);
 }

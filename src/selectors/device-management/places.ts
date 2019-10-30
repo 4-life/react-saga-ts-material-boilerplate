@@ -10,7 +10,7 @@ function getPlacesState(state: State) {
 
 export function arePlacesLoading(state: State) {
   const placesState = getPlacesState(state);
-  return placesState.isFetching;
+  return placesState.fetching;
 }
 
 export function getPlace(placeId: Place['id'], state: State) {

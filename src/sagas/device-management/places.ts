@@ -5,11 +5,11 @@ import {
   FETCH_PLACES_SUCCESS,
   FETCH_DATA_FAILED,
   GetPlaces,
-} from '../actions/dummy-data';
+} from '../../actions/dummy-data';
 
-import { ApiResponse, ReasonEnum } from '../models/apiResponse';
-import { fetchPlaces } from '../clients/client1';
-import { ENQUEUE_SNACKBAR } from '../actions/notifier';
+import { ApiResponse, ReasonEnum } from '../../models/apiResponse';
+import { fetchPlaces } from '../../clients/client1';
+import { ENQUEUE_SNACKBAR } from '../../actions/notifier';
 
 export function* fetchDataApi(action: GetPlaces) {
   const response: ApiResponse = yield call(fetchPlaces, action);
@@ -36,6 +36,6 @@ export function* fetchDataApi(action: GetPlaces) {
   }
 }
 
-export const dummyDataSagas = [
+export const sagas = [
   takeEvery(FETCH_PLACES, fetchDataApi)
 ];

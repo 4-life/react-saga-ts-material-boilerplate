@@ -13,7 +13,7 @@ import {
 } from '../../selectors/device-management/places';
 
 // components
-import CouplePage, { Props as ComponentProps } from './component';
+import CouplePage, { Props as ComponentProps } from './data-loader';
 
 interface RouteParams {
   deviceId?: string,
@@ -49,8 +49,10 @@ function getCouple(coupleParams: CoupleParams, state): Couple {
 
 interface StateProps {
   device?: DeviceModel,
+  deviceId?: DeviceModel['device_id'],
   deviceLoading: boolean,
   place?: PlaceModel,
+  placeId?: PlaceModel['id'],
   placeLoading: boolean,
 }
 
@@ -68,8 +70,10 @@ function mapStateToProps(state: State, props: OwnProps): StateProps {
 
   return {
     device: couple.device,
+    deviceId: coupleParams.deviceId,
     deviceLoading: areDevicesLoading(state),
     place: couple.place,
+    placeId: coupleParams.placeId,
     placeLoading: arePlacesLoading(state),
   };
 }

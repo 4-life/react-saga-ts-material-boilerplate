@@ -17,3 +17,13 @@ export function getPlace(placeId: Place['id'], state: State) {
   const placesState = getPlacesState(state);
   return placesState.entries[placeId];
 }
+
+export function getDeviceIdByPlaceId(placeId: Place['id'], state: State) {
+  const place = getPlace(placeId, state);
+
+  if (!place) {
+    return undefined;
+  }
+
+  return place.device_id;
+}

@@ -51,13 +51,21 @@ function fillDevice(device: Partial<Device>): Device {
   };
 }
 
-export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse> => {
+type FetchAllDevicesResponse = ApiResponse<Array<Partial<Device>>>;
+
+function fetchAllDevices(): Promise<FetchAllDevicesResponse> {
   return fetch(urls.findDevices)
-    .then((res) => res.json())
-    .then((res: ApiResponse<Array<Partial<Device>>>) => ({
-      ...res,
-      data: res.data && res.data.map(fillDevice),
-    }))
+    .then((res) => res.json());
+}
+
+export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse> => {
+  return fetchAllDevices()
+    .then((res) => {
+      return {
+        ...res,
+        data: res.data && res.data.map(fillDevice),
+      };
+    })
     .catch((err) => err);
 };
 
@@ -91,3 +99,24 @@ export const fetchPlaces = (action: GetPlaces): Promise<FetchPlacesResponse> => 
     }))
     .catch((err) => err);
 };
+
+export type FetchPlaceDeviceResponse = ApiResponse<Device | null>;
+
+export async function fetchPlaceDevice(
+  placeId: Place['id'],
+): Promise<FetchPlaceDeviceResponse> {
+  return fetchAllDevices()
+    .then((res) => {
+      let device;
+
+      if (res.data) {
+        device = res.data.find((device) => device.place_id === placeId);
+      }
+
+      return {
+        ...res,
+        data: device ? fillDevice(device) : null,
+      };
+    })
+    .catch((err) => err);
+}

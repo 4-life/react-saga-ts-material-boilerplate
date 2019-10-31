@@ -18,3 +18,7 @@ export interface Place {
   network_id?: string;
   device_id?: DeviceId | null;
 }
+
+export function isPlaceId(x) {
+  return typeof x === 'number';
+}

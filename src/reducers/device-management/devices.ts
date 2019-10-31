@@ -1,4 +1,5 @@
 import * as deviceActions from '../../actions/device-management/devices';
+import * as placeDeviceActions from '../../actions/device-management/place-device-couple';
 import { Device } from '../../models';
 import { keyBy } from '../../utils/ds/array';
 
@@ -20,12 +21,18 @@ const initialState: State = {
   fetching: false,
 };
 
+type Action = (
+  | deviceActions.Action
+  | placeDeviceActions.Action
+);
+
 export const reducer = (
   state: State = initialState,
-  action: deviceActions.Action,
+  action: Action,
 ): State => {
   switch (action.type) {
-    case deviceActions.FETCH_DEVICES: {
+    case deviceActions.FETCH_DEVICES:
+    case placeDeviceActions.FETCH_PLACE_DEVICE: {
       return { ...state, fetching: true };
     }
 
@@ -41,7 +48,30 @@ export const reducer = (
       };
     }
 
-    case deviceActions.FETCH_DEVICES_FAILURE: {
+    case placeDeviceActions.FETCH_PLACE_DEVICE_SUCCESS: {
+      let entries;
+
+      const { device } = action.payload;
+
+      if (device) {
+        entries = {
+          ...state.entries,
+          [device.device_id]: device,
+        };
+      } else {
+        entries = state.entries;
+      }
+
+      return {
+        ...state,
+        entries,
+        error: null,
+        fetching: false,
+      };
+    }
+
+    case deviceActions.FETCH_DEVICES_FAILURE:
+    case placeDeviceActions.FETCH_PLACE_DEVICE_FAILURE: {
       return {
         ...state,
         error: action.payload,

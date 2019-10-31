@@ -1,5 +1,6 @@
+import * as placeDeviceActions from '../../actions/device-management/place-device-couple';
 import {
-  Action,
+  Action as PlaceAction,
   FETCH_PLACES,
   FETCH_PLACES_SUCCESS,
   FETCH_DATA_FAILED,
@@ -23,9 +24,15 @@ const initState: State = {
   fetching: false,
 };
 
+type Action = (
+  | PlaceAction
+  | placeDeviceActions.Action
+);
+
 export const reducer = (state: State = initState, action: Action): State => {
   switch (action.type) {
-    case FETCH_PLACES: {
+    case FETCH_PLACES:
+    case placeDeviceActions.FETCH_PLACE_DEVICE: {
       return { ...state, fetching: true };
     }
 
@@ -41,10 +48,31 @@ export const reducer = (state: State = initState, action: Action): State => {
       };
     }
 
-    case FETCH_DATA_FAILED: {
+    case placeDeviceActions.FETCH_PLACE_DEVICE_SUCCESS: {
+      const { placeId } = action.payload;
+
       return {
         ...state,
-        error: action.error,
+        entries: {
+          ...state.entries,
+          [placeId]: {
+            ...state.entries[placeId],
+            device_id: (
+              action.payload.device &&
+              action.payload.device.device_id
+            ),
+          },
+        },
+        error: null,
+        fetching: false,
+      };
+    }
+
+    case FETCH_DATA_FAILED:
+    case placeDeviceActions.FETCH_PLACE_DEVICE_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
         fetching: false,
       };
     }

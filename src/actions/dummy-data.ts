@@ -18,7 +18,7 @@ interface GetPlacesSuccess {
 }
 interface GetPlacesFailed {
   readonly type: FETCH_DATA_FAILED;
-  error: string;
+  payload: string;
 }
 
 export const DoGetPlaces: (ids: number[]) => GetPlaces = (ids) => ({
@@ -28,7 +28,7 @@ export const DoGetPlaces: (ids: number[]) => GetPlaces = (ids) => ({
 
 export const GetPlacesFailed: (error: string) => GetPlacesFailed = (error) => ({
   type: FETCH_DATA_FAILED,
-  error,
+  payload: error,
 });
 
 export const GetPlacesSuccess: (data: Place[]) => GetPlacesSuccess = (data) => ({

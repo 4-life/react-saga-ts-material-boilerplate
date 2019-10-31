@@ -20,6 +20,6 @@ export const fetchDevices = (action: FetchDevices): Promise<ApiResponse> => {
 };
 
 export const fetchPlaces = (action: GetPlaces): Promise<ApiResponse> => {
-  return fetch(urls.findDevices)
+  return fetch(urls.findPlaces)
     .catch((err) => err);
 };

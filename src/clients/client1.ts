@@ -62,8 +62,31 @@ export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse
 
 export type FetchPlacesResponse = ApiResponse<Array<Place>>;
 
+function fillPlace(place: Partial<Place>): Place {
+  // FIXME: use smth like `defaults` from "lodash" instead
+  // to prevent filling the final object with nil values
+  // if the original `device` suddenly contains them
+  return {
+    id: faker.random.number(),
+    level: faker.random.number({ min: -5, max: 10, precision: 1 }),
+    lat: parseFloat(faker.address.latitude()),
+    lon: parseFloat(faker.address.longitude()),
+    creation_date: faker.date.past(),
+    group_id: faker.random.number(),
+    group_inner_id: faker.random.number(),
+    custom_id: faker.random.alphaNumeric(8),
+    network_id: faker.random.uuid(),
+
+    ...place,
+  };
+}
+
 export const fetchPlaces = (action: GetPlaces): Promise<FetchPlacesResponse> => {
   return fetch(urls.findPlaces)
     .then((res) => res.json())
+    .then((res: ApiResponse<Array<Partial<Place>>>) => ({
+      ...res,
+      data: res.data && res.data.map(fillPlace),
+    }))
     .catch((err) => err);
 };

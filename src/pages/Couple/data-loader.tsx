@@ -100,8 +100,10 @@ const CoupleDataLoader: React.FC<Props & DispatchProps> = (props) => {
   );
 };
 
-export default connect<
+/* eslint-disable no-unexpected-multiline */
+export default connect/*<
   {},
   typeof mapDispatchToProps,
   Props
->(null, mapDispatchToProps)(CoupleDataLoader);
+>*/(null, mapDispatchToProps)(CoupleDataLoader);
+/* eslint-enable no-unexpected-multiline */

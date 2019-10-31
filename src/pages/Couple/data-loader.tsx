@@ -2,23 +2,39 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchDevices } from '../../actions/device-management/devices';
+import { fetchPlaceDevice } from '../../actions/device-management/place-device-couple';
 import { DoGetPlaces } from '../../actions/dummy-data';
-import { Device, Place } from '../../models';
+import { Device, Place, isPlaceId } from '../../models';
 
 // components
 import CouplePage, { Props as ComponentProps } from './component';
 
-const mapDispatchToProps = {
-  onInitDevice: (id: Device['device_id']) => fetchDevices([id]),
-  onInitPlace: (id: Place['id']) => DoGetPlaces([id]),
+type PlaceInitHandlerOptions = {
+  deviceId?: Device['device_id'],
+  placeId: Place['id'],
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onInitDevice: (id: Device['device_id']) => {
+    return dispatch(fetchDevices([id]));
+  },
+  onInitPlace: (options: PlaceInitHandlerOptions) => {
+    dispatch(DoGetPlaces([options.placeId]));
+
+    if (!options.deviceId) {
+      dispatch(fetchPlaceDevice(options.placeId));
+    }
+  },
+});
 
 export type Props = ComponentProps & {
   deviceId?: Device['device_id'],
   placeId?: Place['id'],
 };
 
-const CoupleDataLoader: React.FC<Props & typeof mapDispatchToProps> = (props) => {
+type DispatchProps = ReturnType<typeof mapDispatchToProps>;
+
+const CoupleDataLoader: React.FC<Props & DispatchProps> = (props) => {
   const { deviceId, placeId, onInitDevice, onInitPlace } = props;
 
   const [
@@ -31,41 +47,55 @@ const CoupleDataLoader: React.FC<Props & typeof mapDispatchToProps> = (props) =>
     setPlaceInited,
   ] = React.useState<Place['id'] | null>(null);
 
+  const deviceIdInited = (
+    !props.deviceId ||
+    props.deviceId === initedDeviceId
+  );
+
+  const placeIdInited = (
+    !isPlaceId(props.placeId) ||
+    props.placeId === initedPlaceId
+  );
+
   React.useEffect(
     () => {
-      if (!deviceId) {
+      if (!deviceId || deviceIdInited) {
         return;
       }
 
       onInitDevice(deviceId);
       setDeviceInited(deviceId);
     },
-    [deviceId, onInitDevice, setDeviceInited],
+    [deviceId, deviceIdInited, onInitDevice, setDeviceInited],
   );
 
   React.useEffect(
     () => {
-      if (typeof placeId !== 'number') {
+      if (!isPlaceId(placeId) || placeIdInited) {
         return;
       }
 
-      onInitPlace(placeId);
-      setPlaceInited(placeId);
+      onInitPlace({ deviceId, placeId: placeId as Place['id'] });
+      setPlaceInited(placeId as Place['id']);
     },
-    [placeId, onInitPlace, setPlaceInited],
+    [deviceId, placeId, placeIdInited, onInitPlace, setPlaceInited],
+  );
+
+  const deviceLoadingOrAboutToStartLoading = (
+    props.deviceLoading ||
+    !deviceIdInited
+  );
+  
+  const placeLoadingOrAboutToStartLoading = (
+    props.placeLoading ||
+    !placeIdInited
   );
 
   return (
     <CouplePage
       {...props}
-      deviceLoading={
-        props.deviceLoading ||
-        (!!props.deviceId && initedDeviceId !== props.deviceId)
-      }
-      placeLoading={
-        props.placeLoading ||
-        (typeof props.placeId === 'number' && initedPlaceId !== props.placeId)
-      }
+      deviceLoading={deviceLoadingOrAboutToStartLoading}
+      placeLoading={placeLoadingOrAboutToStartLoading}
     />
   );
 };

@@ -1,15 +1,21 @@
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { Device as DeviceModel, Place as PlaceModel } from '../../models';
+import {
+  Device as DeviceModel,
+  Place as PlaceModel,
+  isPlaceId,
+} from '../../models';
 import { RootState as State } from '../../reducers';
 import {
   areDevicesLoading,
   getDevice,
+  getPlaceIdByDeviceId,
 } from '../../selectors/device-management/devices';
 import {
   arePlacesLoading,
   getPlace,
+  getDeviceIdByPlaceId,
 } from '../../selectors/device-management/places';
 
 // components
@@ -28,21 +34,59 @@ interface Couple {
 }
 
 interface CoupleParams {
-  deviceId?: DeviceModel['device_id'],
-  placeId?: PlaceModel['id'],
+  deviceId?: DeviceModel['device_id'] | null,
+  placeId?: PlaceModel['id'] | null,
+}
+
+function mapRouteParamToPlaceId(placeIdParam?: string) {
+  if (!placeIdParam) {
+    return undefined;
+  }
+
+  return parseInt(placeIdParam, 10);
+}
+
+function getCoupleParams(routeParams: RouteParams, state: State): CoupleParams {
+  const { deviceId } = routeParams;
+  const placeId = mapRouteParamToPlaceId(routeParams.placeId);
+
+  if (deviceId && isPlaceId(placeId)) {
+    return { deviceId, placeId };
+  }
+
+  if (!deviceId && !isPlaceId(placeId)) {
+    return {
+      deviceId: undefined,
+      placeId: undefined,
+    };
+  }
+
+  if (deviceId) {
+    return {
+      deviceId,
+      placeId: getPlaceIdByDeviceId(deviceId, state),
+    };
+  }
+
+  return {
+    deviceId: getDeviceIdByPlaceId(placeId as PlaceModel['id'], state),
+    placeId,
+  };
 }
 
 function getCouple(coupleParams: CoupleParams, state): Couple {
+  const { deviceId, placeId } = coupleParams;
+
   return {
     device: (
-      typeof coupleParams.deviceId === 'undefined'
-        ? undefined
-        : getDevice(coupleParams.deviceId, state)
+      deviceId
+        ? getDevice(deviceId, state)
+        : undefined
     ),
     place: (
-      typeof coupleParams.placeId === 'undefined'
-        ? undefined
-        : getPlace(coupleParams.placeId, state)
+      isPlaceId(placeId)
+        ? getPlace(placeId as PlaceModel['id'], state)
+        : undefined
     ),
   };
 }
@@ -59,22 +103,31 @@ interface StateProps {
 type OwnProps = Omit<Props, keyof StateProps>;
 
 function mapStateToProps(state: State, props: OwnProps): StateProps {
-  const coupleParams = {
-    deviceId: props.match.params.deviceId,
-    placeId: props.match.params.placeId
-      ? parseInt(props.match.params.placeId, 10)
-      : undefined,
-  };
-
+  const coupleParams = getCoupleParams(props.match.params, state);
   const couple = getCouple(coupleParams, state);
 
   return {
     device: couple.device,
-    deviceId: coupleParams.deviceId,
-    deviceLoading: areDevicesLoading(state),
     place: couple.place,
-    placeId: coupleParams.placeId,
-    placeLoading: arePlacesLoading(state),
+
+    deviceId: (
+      coupleParams.deviceId ||
+      undefined
+    ),
+    placeId: (
+      isPlaceId(coupleParams.placeId)
+        ? coupleParams.placeId as PlaceModel['id']
+        : undefined
+    ),
+
+    deviceLoading: (
+      typeof coupleParams.deviceId === 'undefined' ||
+      areDevicesLoading(state)
+    ),
+    placeLoading: (
+      typeof coupleParams.placeId === 'undefined' ||
+      arePlacesLoading(state)
+    ),
   };
 }
 

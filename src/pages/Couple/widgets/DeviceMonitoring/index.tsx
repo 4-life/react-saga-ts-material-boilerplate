@@ -12,17 +12,23 @@ import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { FieldSkeleton } from '../../../../components/Skeleton';
+
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device: Device,
+  device?: Device,
 };
 
 const DeviceMonitoring: React.FC<Props> = (props) => {
   const { device } = props;
   const infoCss = useInfoBlockStyles();
   const t = useLocalization();
+
+  if (!device) {
+    return <FieldSkeleton className={infoCss.field} />;
+  }
 
   return (
     <ExpansionPanel>

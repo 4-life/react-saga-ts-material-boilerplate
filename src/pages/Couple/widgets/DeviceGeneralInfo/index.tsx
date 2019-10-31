@@ -23,11 +23,13 @@ import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { FieldSkeleton } from '../../../../components/Skeleton';
+
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device: Device,
+  device?: Device,
   idPrefix?: string,
 };
 
@@ -36,6 +38,10 @@ const DeviceGeneralInfo: React.FC<Props> = (props) => {
   const infoCss = useInfoBlockStyles();
   const t = useLocalization();
   const deviceTypeFieldId = combineIds(props.idPrefix, Fields.DEVICE_TYPE);
+
+  if (!device) {
+    return <FieldSkeleton className={infoCss.field} />;
+  }
 
   return (
     <ExpansionPanel defaultExpanded>

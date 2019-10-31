@@ -36,7 +36,11 @@ const CouplePage: React.FC<Props> = (props) => {
 
       <Grid container spacing={2}>
         <Grid className={layoutCss.block} item>
-          <Device device={props.device} idPrefix="device" />
+          <Device
+            device={props.device}
+            idPrefix="device"
+            loading={props.deviceLoading}
+          />
         </Grid>
         <Grid className={layoutCss.block} item>
           <Place place={props.place} idPrefix="place" />

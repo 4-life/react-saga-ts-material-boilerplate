@@ -23,11 +23,14 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
 import SearchableSelect from '../../../../components/SearchableSelect';
+import { FieldSkeleton } from '../../../../components/Skeleton';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
-interface Props {}
+interface Props {
+  loading: boolean,
+}
 
 const ITEMS = [...new Array(10)].map(() => {
   const id = faker.random.alphaNumeric(8);
@@ -42,11 +45,15 @@ export const useOperationsStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const DeviceOperations: React.FC<Props> = () => {
+const DeviceOperations: React.FC<Props> = (props) => {
   const infoCss = useInfoBlockStyles();
   const operationsCss = useOperationsStyles();
   const t = useLocalization();
   const tOperations = t.deviceManagement.device.operations;
+
+  if (props.loading) {
+    return <FieldSkeleton className={infoCss.field} />;
+  }
 
   return (
     <ExpansionPanel>

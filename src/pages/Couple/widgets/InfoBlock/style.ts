@@ -2,6 +2,10 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 export const useInfoBlockStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      position: 'relative',
+      padding: '1px',
+    },
     actions: {
       alignSelf: 'flex-end',
     },

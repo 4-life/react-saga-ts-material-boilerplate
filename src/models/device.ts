@@ -1,9 +1,9 @@
-import { Place } from './place';
+import { DeviceId, PlaceId } from './shared';
 
 export interface Device {
   // general information
-  device_id: string,
-  place_id: Place['id'] | null,
+  device_id: DeviceId,
+  place_id: PlaceId | null,
   protocol: string,
   firmware: string,
   device_type: string,

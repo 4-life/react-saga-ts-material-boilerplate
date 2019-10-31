@@ -1,8 +1,10 @@
+import { DeviceId, PlaceId } from './shared';
+
 export interface Place { 
   /**
    * Place Primary Key
    */
-  id: number;
+  id: PlaceId;
   level?: number;
   lat: number;
   lon: number;
@@ -14,4 +16,5 @@ export interface Place {
   group_inner_id: number;
   custom_id?: string;
   network_id?: string;
+  device_id?: DeviceId | null;
 }

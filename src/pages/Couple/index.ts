@@ -7,6 +7,7 @@ import {
   isPlaceId,
 } from '../../models';
 import { RootState as State } from '../../reducers';
+import { CoupleRouteParams } from '../../routing/routes/device-management';
 import {
   areDevicesLoading,
   getDevice,
@@ -21,12 +22,7 @@ import {
 // components
 import CouplePage, { Props as ComponentProps } from './data-loader';
 
-interface RouteParams {
-  deviceId?: string,
-  placeId?: string,
-}
-
-type Props = ComponentProps & RouteComponentProps<RouteParams>;
+type Props = ComponentProps & RouteComponentProps<CoupleRouteParams>;
 
 interface Couple {
   device?: DeviceModel,
@@ -46,7 +42,7 @@ function mapRouteParamToPlaceId(placeIdParam?: string) {
   return parseInt(placeIdParam, 10);
 }
 
-function getCoupleParams(routeParams: RouteParams, state: State): CoupleParams {
+function getCoupleParams(routeParams: CoupleRouteParams, state: State): CoupleParams {
   const { deviceId } = routeParams;
   const placeId = mapRouteParamToPlaceId(routeParams.placeId);
 

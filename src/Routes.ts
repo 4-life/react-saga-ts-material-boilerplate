@@ -1,10 +1,11 @@
 import {
-  Couple,
   Home,
   NoMatch,
   SubPage,
   TestPage,
 } from './pages';
+import { routes as deviceManagementRoutes } from './routing/routes/device-management';
+
 import { ComponentType } from 'react';
 
 interface Router {
@@ -28,6 +29,7 @@ const Routes: SubRouter[] = [
     icon: 'home',
     routes: []
   },
+  ...deviceManagementRoutes,
   {
     path: '/page2',
     main: Home,
@@ -47,12 +49,6 @@ const Routes: SubRouter[] = [
     label: 'Test Page',
     main: TestPage,
     routes: []
-  },
-  {
-    path: '/couple',
-    label: 'Couple',
-    main: Couple,
-    routes: [],
   },
   {
     main: NoMatch,

@@ -11,6 +11,7 @@
     "clsx": "^1.0.4",
     "date-fns": "^2.6.0",
     "downshift": "^3.4.0",
+    "faker": "^4.1.0",
     "material-ui-popup-state": "^1.4.1",
     "mui-datatables": "^2.6.4",
     "mui-downshift": "^1.4.1",
@@ -70,7 +71,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.2.0",
-    "faker": "^4.1.0",
     "tape": "^4.11.0",
     "typescript": "^3.6.4"
   }

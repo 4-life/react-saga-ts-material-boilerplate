@@ -14,7 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
-import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { MuiThemeProvider as ThemeProvider } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 

@@ -14,7 +14,7 @@ import rootSaga from './sagas';
 import { Container } from '@material-ui/core';
 import MuiPickersUtilsProvider from '@material-ui/pickers/MuiPickersUtilsProvider';
 
-import { ThemeProvider } from '@material-ui/styles';
+import { MuiThemeProvider as ThemeProvider } from '@material-ui/core/styles';
 import mainTheme from './styles/themes/main';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { HelmetProvider } from 'react-helmet-async';

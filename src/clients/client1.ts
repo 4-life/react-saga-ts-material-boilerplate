@@ -18,6 +18,7 @@ export type FetchDevicesResponse = ApiResponse<Array<Device>>;
 
 export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse> => {
   return fetch(urls.findDevices)
+    .then((res) => res.json())
     .catch((err) => err);
 };
 
@@ -25,5 +26,6 @@ export type FetchPlacesResponse = ApiResponse<Array<Place>>;
 
 export const fetchPlaces = (action: GetPlaces): Promise<FetchPlacesResponse> => {
   return fetch(urls.findPlaces)
+    .then((res) => res.json())
     .catch((err) => err);
 };

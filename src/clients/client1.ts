@@ -24,6 +24,7 @@ function fillDevice(device: Partial<Device>): Device {
   // if the original `device` suddenly contains them
   return {
     device_id: faker.random.alphaNumeric(8),
+    place_id: null,
     protocol: faker.system.semver(),
     firmware: faker.system.semver(),
     device_type: 'Parking sensor',

@@ -1,6 +1,9 @@
+import { Place } from './place';
+
 export interface Device {
   // general information
   device_id: string,
+  place_id: Place['id'] | null,
   protocol: string,
   firmware: string,
   device_type: string,

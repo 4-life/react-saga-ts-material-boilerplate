@@ -93,7 +93,7 @@ const PlaceGeneralInfo: React.FC<Props> = (props) => {
             label={tGeneral.creationDate}
             value={
               place.creation_date &&
-              formatDateTime(place.creation_date.toISOString())
+              formatDateTime(place.creation_date)
             }
           />
 

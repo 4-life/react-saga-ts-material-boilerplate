@@ -80,7 +80,7 @@ function fillPlace(place: Partial<Place>): Place {
     level: faker.random.number({ min: -5, max: 10, precision: 1 }),
     lat: parseFloat(faker.address.latitude()),
     lon: parseFloat(faker.address.longitude()),
-    creation_date: faker.date.past(),
+    creation_date: faker.date.past().toISOString(),
     group_id: faker.random.number(),
     group_inner_id: faker.random.number(),
     custom_id: faker.random.alphaNumeric(8),

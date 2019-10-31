@@ -8,7 +8,7 @@ export interface Place {
   level?: number;
   lat: number;
   lon: number;
-  creation_date?: Date;
+  creation_date?: string;
   /**
    * Group Primary Key
    */

@@ -20,11 +20,13 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { FieldSkeleton } from '../../../../components/Skeleton';
+
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  place: Place,
+  place?: Place,
   idPrefix?: string,
 };
 
@@ -40,6 +42,10 @@ const PlaceGeneralInfo: React.FC<Props> = (props) => {
   const geoLatFieldId = combineIds(props.idPrefix, Fields.GEO_LAT);
   const batchFieldId = combineIds(props.idPrefix, Fields.BATCH);
   const groupFieldId = combineIds(props.idPrefix, Fields.GROUP);
+
+  if (!place) {
+    return <FieldSkeleton className={infoCss.field} />;
+  }
 
   return (
     <ExpansionPanel defaultExpanded>

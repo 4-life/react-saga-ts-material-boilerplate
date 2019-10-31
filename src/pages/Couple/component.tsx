@@ -43,7 +43,11 @@ const CouplePage: React.FC<Props> = (props) => {
           />
         </Grid>
         <Grid className={layoutCss.block} item>
-          <Place place={props.place} idPrefix="place" />
+          <Place
+            place={props.place}
+            idPrefix="place"
+            loading={props.placeLoading}
+          />
         </Grid>
       </Grid>
     </>

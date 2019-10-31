@@ -2,14 +2,16 @@ import { put, takeEvery, call } from 'redux-saga/effects';
 
 import * as placesActions from '../../actions/dummy-data';
 import { NotifyError } from '../../actions/notifier';
-import { ApiResponse, ReasonEnum } from '../../models/apiResponse';
-import { fetchPlaces } from '../../clients/client1';
+import { ReasonEnum } from '../../models/apiResponse';
+import { fetchPlaces, FetchPlacesResponse } from '../../clients/client1';
 
 export function* fetchDataApi(action: placesActions.GetPlaces) {
-  const response: ApiResponse = yield call(fetchPlaces, action);
+  const response: FetchPlacesResponse = yield call(fetchPlaces, action);
 
   if (response.reason === ReasonEnum.Ok) {
-    yield put(placesActions.GetPlacesSuccess(response.data));
+    if (response.data) {
+      yield put(placesActions.GetPlacesSuccess(response.data));
+    }
   } else {
     yield put(placesActions.GetPlacesFailed(
       response.message || 'Server error',

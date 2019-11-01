@@ -3,11 +3,12 @@ import { Route, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import Routes from '../../Routes';
-import { matchRoutes } from 'react-router-config';
 import { withRouter } from 'react-router-dom';
 import { RouteProps } from 'react-router';
 import { State as userProfileState } from '../../reducers/user-profile';
 import { RootState } from '../../reducers';
+
+import { renderBreadcrumbsEntries } from './utils';
 
 import logo from '../../images/nwave_logo_bk.png';
 
@@ -190,14 +191,7 @@ const Component = (props: RouteProps & Props) => {
             <MenuIcon />
           </IconButton>
           <Breadcrumbs className={classes.title} separator={<NavigateNext fontSize="small" />}>
-            {pathname && matchRoutes(Routes, pathname)
-              .filter(({ route }) => route.label)
-              .map(({ route }, i) => (
-                <Typography key={i} variant="h6" color="textSecondary">
-                  {route.label}
-                </Typography>
-              ))
-            }
+            {renderBreadcrumbsEntries({ pathname })}
           </Breadcrumbs>
           {auth && (
             <div>

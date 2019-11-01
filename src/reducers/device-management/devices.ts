@@ -1,12 +1,11 @@
 import * as deviceActions from '../../actions/device-management/devices';
 import * as placeDeviceActions from '../../actions/device-management/place-device-couple';
 import { Device } from '../../models';
-import { keyBy } from '../../utils/ds/array';
 
 export const name = 'devices';
 
 interface Devices {
-  readonly [deviceId: string]: Device,
+  readonly [deviceId: string]: Device | null,
 }
 
 export interface State {
@@ -41,7 +40,7 @@ export const reducer = (
         ...state,
         entries: {
           ...state.entries,
-          ...keyBy(action.payload, 'device_id'),
+          ...action.payload,
         },
         error: null,
         fetching: false,

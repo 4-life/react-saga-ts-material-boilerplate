@@ -22,7 +22,7 @@ export function getDeviceIdByPlaceId(placeId: Place['id'], state: State) {
   const place = getPlace(placeId, state);
 
   if (!place) {
-    return undefined;
+    return place;
   }
 
   return place.device_id;

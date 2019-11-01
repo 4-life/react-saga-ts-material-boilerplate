@@ -4,14 +4,26 @@ import * as deviceActions from '../../actions/device-management/devices';
 import { NotifyError } from '../../actions/notifier';
 import { fetchDevices, FetchDevicesResponse } from '../../clients/client1';
 import { ReasonEnum } from '../../models/apiResponse';
+import { keyBy } from '../../utils/ds/array';
 
 export function* fetchDevicesSaga(action: deviceActions.FetchDevices) {
   const response: FetchDevicesResponse = yield call(fetchDevices, action);
 
   if (response.reason === ReasonEnum.Ok) {
-    if (response.data) {
-      yield put(deviceActions.fetchDevicesSuccess(response.data));
-    }
+    const receivedDevices = response.data
+      ? keyBy(response.data, 'device_id')
+      : {};
+
+    const requestedDeviceEntries = action.payload.map(
+      (deviceId) => [
+        deviceId,
+        receivedDevices[deviceId] || null,
+      ],
+    );
+
+    yield put(deviceActions.fetchDevicesSuccess(
+      Object.fromEntries(requestedDeviceEntries),
+    ));
   } else {
     yield put(deviceActions.fetchDevicesFailure(
       response.message || 'Server error'

@@ -11,7 +11,7 @@ export interface FetchDevices {
 
 export interface FetchDevicesSuccess {
   type: typeof FETCH_DEVICES_SUCCESS,
-  payload: Device[],
+  payload: { [id: string]: Device | null },
 }
 
 export interface FetchDevicesFailure {
@@ -26,7 +26,9 @@ export function fetchDevices(ids: Device['device_id'][]): FetchDevices {
   };
 }
 
-export function fetchDevicesSuccess(devices: Device[]): FetchDevicesSuccess {
+export function fetchDevicesSuccess(
+  devices: FetchDevicesSuccess['payload'],
+): FetchDevicesSuccess {
   return {
     type: FETCH_DEVICES_SUCCESS,
     payload: devices,

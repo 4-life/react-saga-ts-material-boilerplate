@@ -14,7 +14,7 @@ export interface GetPlaces {
 }
 interface GetPlacesSuccess {
   readonly type: FETCH_PLACES_SUCCESS;
-  payload: Place[];
+  payload: { [id: string]: Place | null };
 }
 interface GetPlacesFailed {
   readonly type: FETCH_DATA_FAILED;
@@ -31,10 +31,12 @@ export const GetPlacesFailed: (error: string) => GetPlacesFailed = (error) => ({
   payload: error,
 });
 
-export const GetPlacesSuccess: (data: Place[]) => GetPlacesSuccess = (data) => ({
-  type: FETCH_PLACES_SUCCESS,
-  payload: data,
-});
+export function GetPlacesSuccess(data: GetPlacesSuccess['payload']): GetPlacesSuccess {
+  return {
+    type: FETCH_PLACES_SUCCESS,
+    payload: data,
+  };
+}
 
 export type Action =
   GetPlaces |

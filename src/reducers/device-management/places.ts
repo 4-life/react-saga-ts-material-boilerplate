@@ -6,10 +6,9 @@ import {
   FETCH_DATA_FAILED,
 } from '../../actions/dummy-data';
 import { Place } from '../../models';
-import { keyBy } from '../../utils/ds/array';
 
 interface Places {
-  readonly [id: string]: Place,
+  readonly [id: string]: Place | null,
 }
 
 export interface State {
@@ -41,7 +40,7 @@ export const reducer = (state: State = initState, action: Action): State => {
         ...state,
         entries: {
           ...state.entries,
-          ...keyBy(action.payload, 'id'),
+          ...action.payload,
         },
         error: null,
         fetching: false,
@@ -55,13 +54,15 @@ export const reducer = (state: State = initState, action: Action): State => {
         ...state,
         entries: {
           ...state.entries,
-          [placeId]: {
-            ...state.entries[placeId],
-            device_id: (
-              action.payload.device &&
-              action.payload.device.device_id
-            ),
-          },
+          [placeId]: state.entries[placeId]
+            ? {
+              ...state.entries[placeId],
+              device_id: (
+                action.payload.device &&
+                action.payload.device.device_id
+              ),
+            }
+            : null,
         },
         error: null,
         fetching: false,

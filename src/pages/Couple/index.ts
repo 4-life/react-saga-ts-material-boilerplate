@@ -76,12 +76,12 @@ function getCouple(coupleParams: CoupleParams, state): Couple {
   return {
     device: (
       deviceId
-        ? getDevice(deviceId, state)
+        ? (getDevice(deviceId, state) || undefined)
         : undefined
     ),
     place: (
       isPlaceId(placeId)
-        ? getPlace(placeId as PlaceModel['id'], state)
+        ? (getPlace(placeId as PlaceModel['id'], state) || undefined)
         : undefined
     ),
   };

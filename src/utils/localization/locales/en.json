@@ -80,6 +80,9 @@
         "place": "Place",
         "action": "Bind"
       }
+    },
+    "couple": {
+      "notFound": "You have requested the page of nonexistent device or place."
     }
   }
 }

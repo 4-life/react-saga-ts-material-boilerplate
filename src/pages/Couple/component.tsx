@@ -2,13 +2,18 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
 
 import { Device as DeviceModel, Place as PlaceModel } from '../../models';
+import { useLocalization } from '../../utils/localization';
 
 // components
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { Helmet } from 'react-helmet-async';
 
 import Device from './widgets/Device';
 import Place from './widgets/Place';
+
+// styles
+import useHomeStyles from '../Home/HomeStyles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,7 +31,20 @@ export interface Props {
 }
 
 const CouplePage: React.FC<Props> = (props) => {
+  const homeCss = useHomeStyles();
   const layoutCss = useStyles();
+  const t = useLocalization();
+
+  if (
+    !props.device && !props.deviceLoading &&
+    !props.place && !props.placeLoading
+  ) {
+    return (
+      <Typography variant="h4" className={homeCss.notImplemented}>
+        {t.deviceManagement.couple.notFound}      
+      </Typography>
+    );
+  }
 
   return (
     <>

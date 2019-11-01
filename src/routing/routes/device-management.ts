@@ -1,4 +1,4 @@
-import { Couple } from '../../pages';
+import { Couple, NoMatch } from '../../pages';
 
 const DEVICE_ID_PARAM_NAME = 'deviceId';
 const PLACE_ID_PARAM_NAME = 'placeId';
@@ -10,15 +10,22 @@ export interface CoupleRouteParams {
 
 export const routes = [
   {
-    path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
-    main: Couple,
-    label: 'Device page',
-    routes: [],
-  },
-  {
-    path: `/dm/places/:${PLACE_ID_PARAM_NAME}`,
-    main: Couple,
-    label: 'Place page',
-    routes: [],
+    path: '/dm',
+    main: NoMatch,
+    label: 'Device management',
+    routes: [
+      {
+        path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
+        main: Couple,
+        label: 'Device page',
+        routes: [],
+      },
+      {
+        path: `/dm/places/:${PLACE_ID_PARAM_NAME}`,
+        main: Couple,
+        label: 'Place page',
+        routes: [],
+      },
+    ],
   },
 ];

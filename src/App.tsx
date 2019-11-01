@@ -1,9 +1,10 @@
 import React from 'react';
 import Routes from './Routes';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { RootState } from './reducers';
 import { connect } from 'react-redux';
 
+import { renderRoutes } from './routing/utils/rendering';
 import {
   isFetching as isDeviceManagementFetching,
 } from './selectors/device-management';
@@ -36,35 +37,11 @@ const Component = (props: Props) => {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Switch>
-            {Routes.map((route, index) => {
-              if (!route.routes.length) {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                  />
-                );
-              } else {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    render={({ match: { url } }) => (
-                      <>
-                        <Route path={`${url}/`} exact={true} />
-                        {route.routes.map((subroute, subindex) => (
-                          <Route key={subindex} path={subroute.path} component={subroute.main} exact={subroute.exact} />
-                        ))}
-                      </>
-                    )}
-                  />
-                );
-              }
-            })}
-          </Switch>
+
+          {renderRoutes({
+            getRouteComponent: route => route.main,
+            routes: Routes,
+          })}
         </main>
 
         <Footer />

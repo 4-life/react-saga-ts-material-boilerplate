@@ -23,7 +23,9 @@ export const routes: Route[] = [
           {
             path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
             main: Couple,
-            label: 'Device',
+            renderBreadcrumb({ match }) {
+              return match.params[DEVICE_ID_PARAM_NAME];
+            },
             routes: [],
           },
         ],
@@ -35,7 +37,9 @@ export const routes: Route[] = [
           {
             path: `/dm/places/:${PLACE_ID_PARAM_NAME}`,
             main: Couple,
-            label: 'Place',
+            renderBreadcrumb({ match }) {
+              return match.params[PLACE_ID_PARAM_NAME];
+            },
             routes: [],
           },
         ],

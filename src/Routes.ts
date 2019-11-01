@@ -8,19 +8,16 @@ import { routes as notFoundRoutes } from './routing/routes/not-found';
 
 import { ComponentType } from 'react';
 
-interface Router {
+export type Route = {
   path?: string;
   label: string;
   icon?: string;
   main?: ComponentType;
   exact?: boolean;
-}
+  routes?: Route[];
+};
 
-interface SubRouter extends Router {
-  routes: Router[];
-}
-
-const Routes: SubRouter[] = [
+const Routes: Route[] = [
   {
     path: '/',
     exact: true,

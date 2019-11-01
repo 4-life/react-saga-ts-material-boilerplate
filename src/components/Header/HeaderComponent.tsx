@@ -262,7 +262,7 @@ const Component = (props: RouteProps & Props) => {
         <List className={classes.noPadding} onClick={toggleDrawer(false)}>
           {Routes.map((route, index) => {
             if (route.path && route.path.length > 0) {
-              if (route.routes.length) {
+              if (route.routes && route.routes.length) {
                 return (
                   <SubMenuLink
                     key={index}

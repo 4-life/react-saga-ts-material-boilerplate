@@ -1,10 +1,10 @@
 import {
   Home,
-  NoMatch,
   SubPage,
   TestPage,
 } from './pages';
 import { routes as deviceManagementRoutes } from './routing/routes/device-management';
+import { routes as notFoundRoutes } from './routing/routes/not-found';
 
 import { ComponentType } from 'react';
 
@@ -50,11 +50,7 @@ const Routes: SubRouter[] = [
     main: TestPage,
     routes: []
   },
-  {
-    main: NoMatch,
-    label: 'Not found',
-    routes: []
-  },
+  ...notFoundRoutes,
 ];
 
 export default Routes;

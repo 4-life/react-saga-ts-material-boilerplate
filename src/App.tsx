@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { RootState } from './reducers';
 import { connect } from 'react-redux';
 
+import { routes as notFoundRoutes } from './routing/routes/not-found';
 import { renderRoutes } from './routing/utils/rendering';
 import {
   isFetching as isDeviceManagementFetching,
@@ -39,6 +40,13 @@ const Component = (props: Props) => {
           <div className={classes.toolbar} />
 
           {renderRoutes({
+            getChildRoutes: (route) => {
+              if (!route.routes || !route.routes.length) {
+                return route.routes;
+              }
+
+              return [...route.routes, ...notFoundRoutes];
+            },
             getRouteComponent: route => route.main,
             routes: Routes,
           })}

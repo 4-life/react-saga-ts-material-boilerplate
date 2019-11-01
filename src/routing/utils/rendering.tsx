@@ -4,13 +4,19 @@ import { RouteConfig } from 'react-router-config';
 // components
 import { Switch, SwitchProps, Route } from 'react-router-dom';
 
+type ChildRoutesGetter = (route: RouteConfig) => RouteConfig['routes'];
 type RouteComponentGetter = (route: RouteConfig) => RouteConfig['component'];
 
 type Options = {
   extraProps?: any,
+  getChildRoutes?: ChildRoutesGetter,
   getRouteComponent?: RouteComponentGetter,
   routes: RouteConfig[] | undefined,
   switchProps?: SwitchProps,
+};
+
+const getChildRoutesDefault: ChildRoutesGetter = (route) => {
+  return route.routes;
 };
 
 const getRouteComponentDefault: RouteComponentGetter = (route) => {
@@ -22,6 +28,7 @@ const getRouteComponentDefault: RouteComponentGetter = (route) => {
  * - if `route.render` and route component are falsy, it renders the routes **recursively**
  * - it receives an options object instead of unnamed arguments list
  * - it supports an optional `options.getRouteComponent` to configure the route component property
+ * - it supports an optional `options.getChildRoutes` to configure the child routes
  * (defaults to `route.component`)
  */
 export function renderRoutes(options: Options) {
@@ -63,9 +70,16 @@ export function renderRoutes(options: Options) {
               );
             }
 
+            const getChildRoutes = (
+              options.getChildRoutes ||
+              getChildRoutesDefault
+            );
+
+            const childRoutes = getChildRoutes(route);
+
             return renderRoutes({
               ...options,
-              routes: route.routes,
+              routes: childRoutes,
             });
           }}
         />

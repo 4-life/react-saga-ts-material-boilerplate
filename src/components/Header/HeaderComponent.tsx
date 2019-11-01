@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import Routes from '../../Routes';
+import { matchRoutes } from 'react-router-config';
 import { withRouter } from 'react-router-dom';
 import { RouteProps } from 'react-router';
 import { State as userProfileState } from '../../reducers/user-profile';
@@ -137,32 +138,6 @@ const MainMenuLink = ({ label, to, activeOnlyWhenExact, icon }: MenuLinks) => {
   );
 };
 
-const findPageTitle = (props: RouteProps): string => {
-  const pathname = props && props.location && props.location.pathname;
-
-  const routes = Routes.flatMap((route) => {
-    return route.routes.length ? route.routes : [{ path: route.path, label: route.label }];
-  });
-
-  const current = routes.find((route) => route.path === pathname);
-
-  if (current) {
-    return current.label || '';
-  } else {
-    return '';
-  }
-};
-
-const findGroupTitle = (props: RouteProps): string | undefined => {
-  const pathname: string = (props && props.location && props.location.pathname) || '';
-
-  for (const route of Routes) {
-    if (route.path && pathname.includes(route.path) && route.routes.length) {
-      return route.label;
-    }
-  }
-};
-
 interface Props {
   user: userProfileState;
 }
@@ -204,7 +179,7 @@ const Component = (props: RouteProps & Props) => {
     setStateMenu(open);
   };
 
-  const groupPathTitle = findGroupTitle(props);
+  const pathname = props && props.location && props.location.pathname;
 
   return (
     <>
@@ -215,8 +190,14 @@ const Component = (props: RouteProps & Props) => {
             <MenuIcon />
           </IconButton>
           <Breadcrumbs className={classes.title} separator={<NavigateNext fontSize="small" />}>
-            {groupPathTitle && <Typography variant="h6" color="textSecondary">{groupPathTitle}</Typography>}
-            <Typography variant="h6" color="textSecondary">{findPageTitle(props)}</Typography>
+            {pathname && matchRoutes(Routes, pathname)
+              .filter(({ route }) => route.label)
+              .map(({ route }, i) => (
+                <Typography key={i} variant="h6" color="textSecondary">
+                  {route.label}
+                </Typography>
+              ))
+            }
           </Breadcrumbs>
           {auth && (
             <div>

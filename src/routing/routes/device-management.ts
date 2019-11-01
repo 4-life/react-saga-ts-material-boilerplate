@@ -15,16 +15,30 @@ export const routes = [
     label: 'Device management',
     routes: [
       {
-        path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
-        main: Couple,
-        label: 'Device page',
-        routes: [],
+        path: '/dm/devices',
+        main: NoMatch,
+        label: 'Devices',
+        routes: [
+          {
+            path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
+            main: Couple,
+            label: 'Device',
+            routes: [],
+          },
+        ],
       },
       {
-        path: `/dm/places/:${PLACE_ID_PARAM_NAME}`,
-        main: Couple,
-        label: 'Place page',
-        routes: [],
+        path: '/dm/places',
+        main: NoMatch,
+        label: 'Places',
+        routes: [
+          {
+            path: `/dm/places/:${PLACE_ID_PARAM_NAME}`,
+            main: Couple,
+            label: 'Place',
+            routes: [],
+          },
+        ],
       },
     ],
   },

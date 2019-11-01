@@ -5,17 +5,7 @@ import {
 } from './pages';
 import { routes as deviceManagementRoutes } from './routing/routes/device-management';
 import { routes as notFoundRoutes } from './routing/routes/not-found';
-
-import { ComponentType } from 'react';
-
-export type Route = {
-  path?: string;
-  label: string;
-  icon?: string;
-  main?: ComponentType;
-  exact?: boolean;
-  routes?: Route[];
-};
+import { Route } from './routing/typings';
 
 const Routes: Route[] = [
   {

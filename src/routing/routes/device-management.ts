@@ -1,3 +1,6 @@
+import { Route } from '../typings';
+
+// components
 import { Couple } from '../../pages';
 
 const DEVICE_ID_PARAM_NAME = 'deviceId';
@@ -8,7 +11,7 @@ export interface CoupleRouteParams {
   [PLACE_ID_PARAM_NAME]?: string,
 }
 
-export const routes = [
+export const routes: Route[] = [
   {
     path: '/dm',
     label: 'Device management',

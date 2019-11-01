@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import faker from 'faker';
 import React from 'react';
 
-import { Place } from '../../../../models';
-import { combineIds } from '../../../../utils/ids';
-import { useLocalization } from '../../../../utils/localization';
-import { formatDateTime } from '../../../../utils/datetime';
+import { Place } from '../../../../../models';
+import { combineIds } from '../../../../../utils/ids';
+import { useLocalization } from '../../../../../utils/localization';
+import { formatDateTime } from '../../../../../utils/datetime';
 import { PlaceFormFieldNames as Fields } from '../Place/utils';
 
 // components
@@ -20,7 +20,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';

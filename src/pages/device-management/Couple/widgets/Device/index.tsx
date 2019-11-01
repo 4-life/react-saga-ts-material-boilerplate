@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Device as DeviceModel } from '../../../../models';
-import { combineIds } from '../../../../utils/ids';
-import { resolveArgs, useLocalization } from '../../../../utils/localization';
+import { Device as DeviceModel } from '../../../../../models';
+import { combineIds } from '../../../../../utils/ids';
+import { resolveArgs, useLocalization } from '../../../../../utils/localization';
 
 // components
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 import DeviceBinding from '../DeviceBinding';
 import DeviceGeneralInfo from '../DeviceGeneralInfo';
 import DeviceBusinessInfo from '../DeviceBusinessInfo';

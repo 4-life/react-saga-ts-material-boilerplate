@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Device } from '../../../../models';
-import { DATETIME_FORMAT, formatDateTime } from '../../../../utils/datetime';
-import { useLocalization } from '../../../../utils/localization';
+import { Device } from '../../../../../models';
+import { DATETIME_FORMAT, formatDateTime } from '../../../../../utils/datetime';
+import { useLocalization } from '../../../../../utils/localization';
 
 // components
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -13,7 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { KeyboardDateTimePicker } from '@material-ui/pickers/DateTimePicker';
 
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';

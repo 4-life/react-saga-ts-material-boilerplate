@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { Device } from '../../../../models';
-import { combineIds } from '../../../../utils/ids';
-import { useLocalization } from '../../../../utils/localization';
+import { Device } from '../../../../../models';
+import { combineIds } from '../../../../../utils/ids';
+import { useLocalization } from '../../../../../utils/localization';
 import { DeviceFormFieldNames as Fields } from '../Device/utils';
 
 // components
@@ -23,7 +23,7 @@ import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';

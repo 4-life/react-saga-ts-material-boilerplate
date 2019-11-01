@@ -2,15 +2,15 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import faker from 'faker';
 import React from 'react';
 
-import { useLocalization } from '../../../../utils/localization';
+import { useLocalization } from '../../../../../utils/localization';
 import {
   default as dangerTheme,
   DANGER_PALETTE_NAME,
-} from '../../../../styles/themes/danger';
+} from '../../../../../styles/themes/danger';
 import {
   default as warningTheme,
   WARNING_PALETTE_NAME,
-} from '../../../../styles/themes/warning';
+} from '../../../../../styles/themes/warning';
 
 // components
 import Button from '@material-ui/core/Button';
@@ -22,8 +22,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-import SearchableSelect from '../../../../components/SearchableSelect';
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import SearchableSelect from '../../../../../components/SearchableSelect';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';

@@ -1,11 +1,11 @@
 import faker from 'faker';
 import React from 'react';
 
-import { useLocalization } from '../../../../utils/localization';
+import { useLocalization } from '../../../../../utils/localization';
 import {
   default as successTheme,
   SUCCESS_PALETTE_NAME,
-} from '../../../../styles/themes/success';
+} from '../../../../../styles/themes/success';
 
 // components
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import SearchableSelect from '../../../../components/SearchableSelect';
+import SearchableSelect from '../../../../../components/SearchableSelect';
 
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';

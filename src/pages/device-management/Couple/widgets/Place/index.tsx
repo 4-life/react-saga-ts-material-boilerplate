@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Place as PlaceModel } from '../../../../models';
-import { combineIds } from '../../../../utils/ids';
-import { resolveArgs, useLocalization } from '../../../../utils/localization';
+import { Place as PlaceModel } from '../../../../../models';
+import { combineIds } from '../../../../../utils/ids';
+import { resolveArgs, useLocalization } from '../../../../../utils/localization';
 
 // components
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { FieldSkeleton } from '../../../../components/Skeleton';
+import { FieldSkeleton } from '../../../../../components/Skeleton';
 import PlaceBinding from '../PlaceBinding';
 import PlaceGeneralInfo from '../PlaceGeneralInfo';
 

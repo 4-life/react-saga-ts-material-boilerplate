@@ -5,19 +5,19 @@ import {
   Device as DeviceModel,
   Place as PlaceModel,
   isPlaceId,
-} from '../../models';
-import { RootState as State } from '../../reducers';
-import { CoupleRouteParams } from '../../routing/routes/device-management';
+} from '../../../models';
+import { RootState as State } from '../../../reducers';
+import { CoupleRouteParams } from '../../../routing/routes/device-management';
 import {
   areDevicesLoading,
   getDevice,
   getPlaceIdByDeviceId,
-} from '../../selectors/device-management/devices';
+} from '../../../selectors/device-management/devices';
 import {
   arePlacesLoading,
   getPlace,
   getDeviceIdByPlaceId,
-} from '../../selectors/device-management/places';
+} from '../../../selectors/device-management/places';
 
 // components
 import CouplePage, { Props as ComponentProps } from './data-loader';

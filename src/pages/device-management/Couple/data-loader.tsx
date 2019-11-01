@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchDevices } from '../../actions/device-management/devices';
-import { fetchPlaceDevice } from '../../actions/device-management/place-device-couple';
-import { DoGetPlaces } from '../../actions/dummy-data';
-import { Device, Place, isPlaceId } from '../../models';
+import { fetchDevices } from '../../../actions/device-management/devices';
+import { fetchPlaceDevice } from '../../../actions/device-management/place-device-couple';
+import { DoGetPlaces } from '../../../actions/dummy-data';
+import { Device, Place, isPlaceId } from '../../../models';
 
 // components
 import CouplePage, { Props as ComponentProps } from './component';

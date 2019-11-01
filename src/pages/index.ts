@@ -1,4 +1,4 @@
-import Couple from './Couple';
+import Couple from './device-management/Couple';
 import Home from './Home/HomePage';
 import NoMatch from './NoMatch/NoMatchPage';
 import SubPage from './SubPage/SubPage';

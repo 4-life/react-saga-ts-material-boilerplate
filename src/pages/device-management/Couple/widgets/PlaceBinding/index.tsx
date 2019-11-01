@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { combineIds } from '../../../../utils/ids';
-import { useLocalization } from '../../../../utils/localization';
+import { combineIds } from '../../../../../utils/ids';
+import { useLocalization } from '../../../../../utils/localization';
 import {
   default as successTheme,
   SUCCESS_PALETTE_NAME,
-} from '../../../../styles/themes/success';
+} from '../../../../../styles/themes/success';
 import { PlaceFormFieldNames as Fields } from '../Place/utils';
 
 // components

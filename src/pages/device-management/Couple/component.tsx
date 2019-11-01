@@ -1,8 +1,8 @@
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
 
-import { Device as DeviceModel, Place as PlaceModel } from '../../models';
-import { useLocalization } from '../../utils/localization';
+import { Device as DeviceModel, Place as PlaceModel } from '../../../models';
+import { useLocalization } from '../../../utils/localization';
 
 // components
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +13,7 @@ import Device from './widgets/Device';
 import Place from './widgets/Place';
 
 // styles
-import useHomeStyles from '../Home/HomeStyles';
+import useHomeStyles from '../../Home/HomeStyles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -3,7 +3,7 @@ import { MatchedRoute } from 'react-router-config';
 
 export type Route = {
   path?: string;
-  label: string;
+  label?: string;
   renderBreadcrumb?: BreadcrumbRenderer,
   icon?: string;
   main?: ComponentType;

@@ -255,6 +255,12 @@ const Component = (props: RouteProps & Props) => {
         <Divider />
         <List className={classes.noPadding} onClick={toggleDrawer(false)}>
           {Routes.map((route, index) => {
+            // TODO: render child routes in their parent's depth
+            // if the parent doesn't have label
+            if (!route.label) {
+              return null;
+            }
+
             if (route.path && route.path.length > 0) {
               if (route.routes && route.routes.length) {
                 return (

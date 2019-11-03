@@ -1,3 +1,5 @@
+import './clients/__mocks__/fetch';
+
 import DateFnsUtils from '@date-io/date-fns';
 import React from 'react';
 import ReactDOM from 'react-dom';

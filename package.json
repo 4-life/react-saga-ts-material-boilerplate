@@ -12,6 +12,7 @@
     "date-fns": "^2.6.0",
     "downshift": "^3.4.0",
     "faker": "^4.1.0",
+    "fetch-mock": "~7.5.1",
     "material-ui-popup-state": "^1.4.1",
     "mui-datatables": "^2.6.4",
     "mui-downshift": "^1.4.1",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
     "@types/faker": "^4.1.6",
+    "@types/fetch-mock": "^7.3.1",
     "@types/jest": "^24.0.16",
     "@types/node": "^12.6.6",
     "@types/prop-types": "^15.7.1",

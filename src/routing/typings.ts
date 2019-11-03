@@ -6,6 +6,7 @@ import { ChildRoutesGetter, RouteComponentGetter } from './utils/rendering';
 export type Route = {
   path?: string;
   label?: string;
+  nonLinkBreadcrumb?: boolean;
   renderBreadcrumb?: BreadcrumbRenderer,
   icon?: string;
   main?: ComponentType;

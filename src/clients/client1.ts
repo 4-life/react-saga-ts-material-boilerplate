@@ -69,6 +69,18 @@ export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse
     .catch((err) => err);
 };
 
+export type SearchDevicesResponse = ApiResponse<Array<Device>>;
+
+export function searchDevices(): Promise<SearchDevicesResponse> {
+  return fetchAllDevices()
+    .then((res) => ({
+      ...res,
+      data: res.data && res.data.map(fillDevice),
+    }))
+    .catch((err) => err);
+}
+
+
 type FetchAllPlacesResponse = ApiResponse<Array<Partial<Place>>>;
 
 function fetchAllPlaces(): Promise<FetchAllPlacesResponse> {

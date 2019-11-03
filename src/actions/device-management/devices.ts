@@ -3,6 +3,7 @@ import { Device } from '../../models';
 export const FETCH_DEVICES = 'FETCH_DEVICES';
 export const FETCH_DEVICES_SUCCESS = 'FETCH_DEVICES_SUCCESS';
 export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE';
+export const SEARCH_DEVICES = 'SEARCH_DEVICES';
 
 export interface FetchDevices {
   type: typeof FETCH_DEVICES,
@@ -17,6 +18,10 @@ export interface FetchDevicesSuccess {
 export interface FetchDevicesFailure {
   type: typeof FETCH_DEVICES_FAILURE,
   payload: string,
+}
+
+export interface SearchDevices {
+  type: typeof SEARCH_DEVICES,
 }
 
 export function fetchDevices(ids: Device['device_id'][]): FetchDevices {
@@ -42,7 +47,13 @@ export function fetchDevicesFailure(error: string): FetchDevicesFailure {
   };
 }
 
-export type Action =
+export function searchDevices(): SearchDevices {
+  return { type: SEARCH_DEVICES };
+}
+
+export type Action = (
   | FetchDevices
   | FetchDevicesSuccess
-  | FetchDevicesFailure;
+  | FetchDevicesFailure
+  | SearchDevices
+);

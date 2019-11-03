@@ -47,7 +47,7 @@ const Component = (props: Props) => {
 
               return [...route.routes, ...notFoundRoutes];
             },
-            getRouteComponent: route => route.main,
+            getRouteComponent: options => options.route.main,
             routes: Routes,
           })}
         </main>

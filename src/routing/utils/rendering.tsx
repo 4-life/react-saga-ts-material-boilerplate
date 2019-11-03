@@ -1,11 +1,18 @@
 import React from 'react';
-import { RouteConfig } from 'react-router-config';
+import { RouteConfig, RouteConfigComponentProps } from 'react-router-config';
 
 // components
 import { Switch, SwitchProps, Route } from 'react-router-dom';
 
-type ChildRoutesGetter = (route: RouteConfig) => RouteConfig['routes'];
-type RouteComponentGetter = (route: RouteConfig) => RouteConfig['component'];
+export type ChildRoutesGetter = (route: RouteConfig) => RouteConfig['routes'];
+
+type RouteComponentGetterOptions =
+  RouteConfigComponentProps &
+  { route: RouteConfig };
+
+export type RouteComponentGetter =
+  (options: RouteComponentGetterOptions) =>
+  RouteConfig['component'];
 
 type Options = {
   extraProps?: any,
@@ -19,8 +26,8 @@ const getChildRoutesDefault: ChildRoutesGetter = (route) => {
   return route.routes;
 };
 
-const getRouteComponentDefault: RouteComponentGetter = (route) => {
-  return route.component;
+const getRouteComponentDefault: RouteComponentGetter = (options) => {
+  return options.route.component;
 }
 
 /**
@@ -58,7 +65,7 @@ export function renderRoutes(options: Options) {
               getRouteComponentDefault
             );
 
-            const Component = getRouteComponent(route);
+            const Component = getRouteComponent({ route, ...props });
 
             if (Component) {
               return (

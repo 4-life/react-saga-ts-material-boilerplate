@@ -21,6 +21,7 @@ export const routes: Route[] = [
   {
     path: '/dm',
     label: 'Device management',
+    nonLinkBreadcrumb: true,
     routes: [
       {
         path: '/dm/devices',

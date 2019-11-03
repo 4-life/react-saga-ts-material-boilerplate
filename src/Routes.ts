@@ -22,6 +22,7 @@ const Routes: Route[] = [
     main: Home,
     label: 'Group Of Pages',
     icon: 'global',
+    nonLinkBreadcrumb: true,
     routes: [
       {
         path: '/page2/sub',

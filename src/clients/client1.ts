@@ -69,6 +69,13 @@ export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse
     .catch((err) => err);
 };
 
+type FetchAllPlacesResponse = ApiResponse<Array<Partial<Place>>>;
+
+function fetchAllPlaces(): Promise<FetchAllPlacesResponse> {
+  return fetch(urls.findPlaces)
+    .then((res) => res.json());
+}
+
 export type FetchPlacesResponse = ApiResponse<Array<Place>>;
 
 function fillPlace(place: Partial<Place>): Place {
@@ -91,9 +98,8 @@ function fillPlace(place: Partial<Place>): Place {
 }
 
 export const fetchPlaces = (action: GetPlaces): Promise<FetchPlacesResponse> => {
-  return fetch(urls.findPlaces)
-    .then((res) => res.json())
-    .then((res: ApiResponse<Array<Partial<Place>>>) => ({
+  return fetchAllPlaces()
+    .then((res) => ({
       ...res,
       data: res.data && res.data.map(fillPlace),
     }))
@@ -118,5 +124,16 @@ export async function fetchPlaceDevice(
         data: device ? fillDevice(device) : null,
       };
     })
+    .catch((err) => err);
+}
+
+export type SearchPlacesResponse = ApiResponse<Array<Place>>;
+
+export function searchPlaces(): Promise<SearchPlacesResponse> {
+  return fetchAllPlaces()
+    .then((res) => ({
+      ...res,
+      data: res.data && res.data.map(fillPlace),
+    }))
     .catch((err) => err);
 }

@@ -5,11 +5,13 @@ import { placePath } from '../../../routing/routes/device-management';
 import { useLocalization } from '../../../utils/localization';
 
 // components
-import Link from '@material-ui/core/Link';
+import MuiLink from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
+
+import Link from '../../../components/Link';
 
 type Props = {
   places: Place[],
@@ -40,9 +42,9 @@ const Places: React.FC<Props> = (props) => {
     <List>
       {props.places.map((place) => (
         <ListItem key={place.id}>
-          <Link href={placePath(place.id)}>
+          <MuiLink component={Link} to={placePath(place.id)}>
             {formatPlaceName(place)}
-          </Link>
+          </MuiLink>
         </ListItem>
       ))}
     </List>

@@ -6,7 +6,7 @@ import { GetPlaces } from '../actions/dummy-data';
 
 const isProd = process.env.REACT_APP_STAGE === 'production';
 
-const urls = {
+export const urls = {
   ...(isProd ? {
     findPlaces: 'https://api.prod',
     findDevices: 'https://api.prod'

@@ -1,8 +1,8 @@
-import { Place } from '../../models';
+import { Device, Place } from '../../models';
 import { Route } from '../typings';
 
 // components
-import { Couple, Places } from '../../pages';
+import { Couple, Devices, Places } from '../../pages';
 
 const DEVICE_ID_PARAM_NAME = 'deviceId';
 const PLACE_ID_PARAM_NAME = 'placeId';
@@ -11,6 +11,9 @@ export interface CoupleRouteParams {
   [DEVICE_ID_PARAM_NAME]?: string,
   [PLACE_ID_PARAM_NAME]?: string,
 }
+
+export const devicePath =
+  (deviceId: Device['device_id']) => `/dm/devices/${deviceId}`;
 
 export const placePath = (placeId: Place['id']) => `/dm/places/${placeId}`;
 
@@ -22,9 +25,14 @@ export const routes: Route[] = [
       {
         path: '/dm/devices',
         label: 'Devices',
+        getRouteComponent: (options) => (
+          options.match.isExact
+            ? Devices
+            : undefined
+        ),
         routes: [
           {
-            path: `/dm/devices/:${DEVICE_ID_PARAM_NAME}`,
+            path: devicePath(`:${DEVICE_ID_PARAM_NAME}`),
             main: Couple,
             renderBreadcrumb({ match }) {
               return match.params[DEVICE_ID_PARAM_NAME];

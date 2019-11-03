@@ -56,6 +56,9 @@
         "action": "Bind"
       }
     },
+    "devices": {
+      "notFound": "There aren't any devices attached to your account."
+    },
     "place": {
       "sectionTitle": "Place {{id}}",
       "general": {

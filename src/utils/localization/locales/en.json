@@ -81,6 +81,9 @@
         "action": "Bind"
       }
     },
+    "places": {
+      "notFound": "There aren't any places attached to your account."
+    },
     "couple": {
       "notFound": "You have requested the page of nonexistent device or place."
     }

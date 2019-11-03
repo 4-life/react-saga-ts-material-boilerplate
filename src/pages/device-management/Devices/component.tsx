@@ -42,7 +42,11 @@ const Devices: React.FC<Props> = (props) => {
     <List>
       {props.devices.map((device) => (
         <ListItem key={device.device_id}>
-          <MuiLink component={Link} to={devicePath(device.device_id)}>
+          <MuiLink
+            color="textSecondary"
+            component={Link}
+            to={devicePath(device.device_id)}
+          >
             {device.device_id}
           </MuiLink>
         </ListItem>

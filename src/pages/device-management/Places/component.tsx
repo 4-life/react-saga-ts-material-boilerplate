@@ -42,7 +42,11 @@ const Places: React.FC<Props> = (props) => {
     <List>
       {props.places.map((place) => (
         <ListItem key={place.id}>
-          <MuiLink component={Link} to={placePath(place.id)}>
+          <MuiLink
+            color="textSecondary"
+            component={Link}
+            to={placePath(place.id)}
+          >
             {formatPlaceName(place)}
           </MuiLink>
         </ListItem>

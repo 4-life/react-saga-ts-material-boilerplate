@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { searchPlaces } from '../../../actions/dummy-data';
 import { Place } from '../../../models';
+import { useFetcher } from '../../../utils/data-fetching';
 import { createAsyncDispatch } from '../../../utils/store';
 
 // components
@@ -18,7 +19,8 @@ const mapDispatchToProps = (dispatch) => {
       return dispatchAsync<
         ReturnType<typeof searchPlaces>,
         Place[] | undefined
-      >(searchPlaces());
+      >(searchPlaces())
+        .then(res => res || array);
     },
   };
 };
@@ -26,39 +28,15 @@ const mapDispatchToProps = (dispatch) => {
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 const PlacesProvider: React.FC<DispatchProps> = (props) => {
-  const { onFetchPlaces } = props;
-
-  const [places, setPlaces] = React.useState<Place[]>(array);
-  const [placesLoading, setPlacesLoading] = React.useState(false);
-  const [fetcherCalled, setFetcherCalled] = React.useState(false);
-
-  React.useEffect(
-    () => {
-      if (fetcherCalled || placesLoading) {
-        return;
-      }
-
-      setFetcherCalled(true);
-      setPlacesLoading(true);
-      onFetchPlaces()
-        .then((places) => setPlaces(places || array))
-        .finally(() => setPlacesLoading(false));
-    },
-    [
-      fetcherCalled, placesLoading, onFetchPlaces,
-      setFetcherCalled, setPlaces, setPlacesLoading,
-    ],
-  );
-
-  const placesLoadingOrAboutToStartLoading = (
-    placesLoading ||
-    !fetcherCalled
-  );
+  const { loading: placesLoading, value: places } = useFetcher({
+    fetch: props.onFetchPlaces,
+    initialValue: array,
+  });
 
   return (
     <Places
       places={places}
-      placesLoading={placesLoadingOrAboutToStartLoading}
+      placesLoading={placesLoading}
     />
   );
 };

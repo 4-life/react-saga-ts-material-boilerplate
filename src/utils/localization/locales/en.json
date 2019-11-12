@@ -1,0 +1,94 @@
+{
+  "deviceManagement": {
+    "device": {
+      "sectionTitle": "Device {{device_id}}",
+      "general": {
+        "sectionTitle": "Device general information",
+        "deviceId": "Device ID",
+        "firmware": "Firmware",
+        "protocol": "Protocol",
+        "deviceType": {
+          "label": "Device type",
+          "options": {
+            "parking_sensor": "Parking sensor"
+          }
+        },
+        "activationStatus": "Activation status",
+        "damagedStatus": "Damaged status",
+        "encryptionKeys": "Encryption keys",
+        "owner": "Owner"
+      },
+      "business": {
+        "sectionTitle": "Device business information",
+        "lastUpdateTime": "Last update time",
+        "lastFirmwareUpdateTime": "Last firmware update time",
+        "productionBatchId": "Production batch ID",
+        "assemblingTime": "Assembling time",
+        "purchaseTime": "Purchase time",
+        "warrantyExpirationTime": "Warranty expiration time",
+        "lastDisablingTime": "Last disabling time",
+        "lastDisablingReason": "Last disabling reason"
+      },
+      "monitoring": {
+        "sectionTitle": "Device monitoring",
+        "lastReceivedMessageTime": "Last received message time",
+        "numberOfOpenIncidents": "Number of open incidents",
+        "currentConnectivity": "Current connectivity",
+        "connectivityHistory": "Connectivity history"
+      },
+      "operations": {
+        "sectionTitle": "Device operations",
+        "unbind": "Unbind",
+        "replace": {
+          "action": "Replace",
+          "deviceIdField": {
+            "label": "Device ID",
+            "placeholder": "Start typing the device ID..."
+          }
+        }
+      },
+      "binding": {
+        "sectionTitle": "Bind device",
+        "deviceIdField": {
+          "label": "Device ID",
+          "placeholder": "Start typing the device ID..."
+        },
+        "action": "Bind"
+      }
+    },
+    "devices": {
+      "notFound": "There aren't any devices attached to your account."
+    },
+    "place": {
+      "sectionTitle": "Place {{id}}",
+      "general": {
+        "sectionTitle": "Place general information",
+        "geo": {
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "sectionTitle": "Geo"
+        },
+        "level": "Level",
+        "creationDate": "Creation date",
+        "groupInnerId": "Group inner ID",
+        "group": "Group",
+        "batch": "Batch",
+        "customId": "Custom ID",
+        "networkId": "Network ID"
+      },
+      "binding": {
+        "sectionTitle": "Bind place",
+        "batch": "Batch",
+        "group": "Group",
+        "place": "Place",
+        "action": "Bind"
+      }
+    },
+    "places": {
+      "notFound": "There aren't any places attached to your account."
+    },
+    "couple": {
+      "notFound": "You have requested the page of nonexistent device or place."
+    }
+  }
+}

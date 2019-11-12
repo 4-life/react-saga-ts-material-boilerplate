@@ -1,24 +1,13 @@
 import {
   Home,
-  NoMatch,
   SubPage,
-  TestPage
+  TestPage,
 } from './pages';
-import { ComponentType } from 'react';
+import { routes as deviceManagementRoutes } from './routing/routes/device-management';
+import { routes as notFoundRoutes } from './routing/routes/not-found';
+import { Route } from './routing/typings';
 
-interface Router {
-  path?: string;
-  label: string;
-  icon?: string;
-  main?: ComponentType;
-  exact?: boolean;
-}
-
-interface SubRouter extends Router {
-  routes: Router[];
-}
-
-const Routes: SubRouter[] = [
+const Routes: Route[] = [
   {
     path: '/',
     exact: true,
@@ -27,11 +16,13 @@ const Routes: SubRouter[] = [
     icon: 'home',
     routes: []
   },
+  ...deviceManagementRoutes,
   {
     path: '/page2',
     main: Home,
     label: 'Group Of Pages',
     icon: 'global',
+    nonLinkBreadcrumb: true,
     routes: [
       {
         path: '/page2/sub',
@@ -47,11 +38,7 @@ const Routes: SubRouter[] = [
     main: TestPage,
     routes: []
   },
-  {
-    main: NoMatch,
-    label: 'Not found',
-    routes: []
-  },
+  ...notFoundRoutes,
 ];
 
 export default Routes;

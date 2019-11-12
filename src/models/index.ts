@@ -1,2 +1,4 @@
 export * from './apiResponse';
-export * from './dummy-data-model';
+export * from './device';
+export * from './place';
+export * from './shared';

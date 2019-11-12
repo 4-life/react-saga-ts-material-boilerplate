@@ -8,6 +8,8 @@ import { RouteProps } from 'react-router';
 import { State as userProfileState } from '../../reducers/user-profile';
 import { RootState } from '../../reducers';
 
+import { renderBreadcrumbsEntries } from './utils';
+
 import logo from '../../images/nwave_logo_bk.png';
 
 // components
@@ -137,32 +139,6 @@ const MainMenuLink = ({ label, to, activeOnlyWhenExact, icon }: MenuLinks) => {
   );
 };
 
-const findPageTitle = (props: RouteProps): string => {
-  const pathname = props && props.location && props.location.pathname;
-
-  const routes = Routes.flatMap((route) => {
-    return route.routes.length ? route.routes : [{ path: route.path, label: route.label }];
-  });
-
-  const current = routes.find((route) => route.path === pathname);
-
-  if (current) {
-    return current.label || '';
-  } else {
-    return '';
-  }
-};
-
-const findGroupTitle = (props: RouteProps): string | undefined => {
-  const pathname: string = (props && props.location && props.location.pathname) || '';
-
-  for (const route of Routes) {
-    if (route.path && pathname.includes(route.path) && route.routes.length) {
-      return route.label;
-    }
-  }
-};
-
 interface Props {
   user: userProfileState;
 }
@@ -204,7 +180,7 @@ const Component = (props: RouteProps & Props) => {
     setStateMenu(open);
   };
 
-  const groupPathTitle = findGroupTitle(props);
+  const pathname = props && props.location && props.location.pathname;
 
   return (
     <>
@@ -215,8 +191,7 @@ const Component = (props: RouteProps & Props) => {
             <MenuIcon />
           </IconButton>
           <Breadcrumbs className={classes.title} separator={<NavigateNext fontSize="small" />}>
-            {groupPathTitle && <Typography variant="h6" color="textSecondary">{groupPathTitle}</Typography>}
-            <Typography variant="h6" color="textSecondary">{findPageTitle(props)}</Typography>
+            {renderBreadcrumbsEntries({ pathname })}
           </Breadcrumbs>
           {auth && (
             <div>
@@ -280,8 +255,14 @@ const Component = (props: RouteProps & Props) => {
         <Divider />
         <List className={classes.noPadding} onClick={toggleDrawer(false)}>
           {Routes.map((route, index) => {
+            // TODO: render child routes in their parent's depth
+            // if the parent doesn't have label
+            if (!route.label) {
+              return null;
+            }
+
             if (route.path && route.path.length > 0) {
-              if (route.routes.length) {
+              if (route.routes && route.routes.length) {
                 return (
                   <SubMenuLink
                     key={index}

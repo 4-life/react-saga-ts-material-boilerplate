@@ -3,10 +3,12 @@ import { Place } from '../models';
 export const FETCH_PLACES = 'FETCH_PLACES';
 export const FETCH_PLACES_SUCCESS = 'FETCH_PLACES_SUCCESS';
 export const FETCH_DATA_FAILED = 'FETCH_DATA_FAILED';
+export const SEARCH_PLACES = 'SEARCH_PLACES';
 
 type FETCH_PLACES = typeof FETCH_PLACES;
 type FETCH_PLACES_SUCCESS = typeof FETCH_PLACES_SUCCESS;
 type FETCH_DATA_FAILED = typeof FETCH_DATA_FAILED;
+type SEARCH_PLACES = typeof SEARCH_PLACES;
 
 export interface GetPlaces {
   readonly type: FETCH_PLACES;
@@ -14,11 +16,14 @@ export interface GetPlaces {
 }
 interface GetPlacesSuccess {
   readonly type: FETCH_PLACES_SUCCESS;
-  payload: Place[];
+  payload: { [id: string]: Place | null };
 }
 interface GetPlacesFailed {
   readonly type: FETCH_DATA_FAILED;
-  error: string;
+  payload: string;
+}
+export interface SearchPlaces {
+  type: SEARCH_PLACES;
 }
 
 export const DoGetPlaces: (ids: number[]) => GetPlaces = (ids) => ({
@@ -28,15 +33,22 @@ export const DoGetPlaces: (ids: number[]) => GetPlaces = (ids) => ({
 
 export const GetPlacesFailed: (error: string) => GetPlacesFailed = (error) => ({
   type: FETCH_DATA_FAILED,
-  error,
+  payload: error,
 });
 
-export const GetPlacesSuccess: (data: Place[]) => GetPlacesSuccess = (data) => ({
-  type: FETCH_PLACES_SUCCESS,
-  payload: data,
-});
+export function GetPlacesSuccess(data: GetPlacesSuccess['payload']): GetPlacesSuccess {
+  return {
+    type: FETCH_PLACES_SUCCESS,
+    payload: data,
+  };
+}
+
+export function searchPlaces(): SearchPlaces {
+  return { type: SEARCH_PLACES };
+}
 
 export type Action =
-  GetPlaces |
-  GetPlacesFailed |
-  GetPlacesSuccess;
+  | GetPlaces
+  | GetPlacesFailed
+  | GetPlacesSuccess
+  | SearchPlaces;

@@ -1,8 +1,15 @@
 import React from 'react';
 import Routes from './Routes';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { RootState } from './reducers';
 import { connect } from 'react-redux';
+
+import { routes as notFoundRoutes } from './routing/routes/not-found';
+import { renderRoutes } from './routing/utils/rendering';
+import {
+  isFetching as isDeviceManagementFetching,
+} from './selectors/device-management';
+
 // components
 import { Footer, Header, Notifier } from './components';
 import { LinearProgress, Fade } from '@material-ui/core';
@@ -15,7 +22,7 @@ interface Props {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  isFetching: state.deviceManagement.isFetching
+  isFetching: isDeviceManagementFetching(state)
 });
 
 const Component = (props: Props) => {
@@ -31,35 +38,24 @@ const Component = (props: Props) => {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Switch>
-            {Routes.map((route, index) => {
-              if (!route.routes.length) {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                  />
-                );
-              } else {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    render={({ match: { url } }) => (
-                      <>
-                        <Route path={`${url}/`} exact={true} />
-                        {route.routes.map((subroute, subindex) => (
-                          <Route key={subindex} path={subroute.path} component={subroute.main} exact={subroute.exact} />
-                        ))}
-                      </>
-                    )}
-                  />
-                );
+
+          {renderRoutes({
+            getChildRoutes: (route) => {
+              if (!route.routes || !route.routes.length) {
+                return route.routes;
               }
-            })}
-          </Switch>
+
+              return [...route.routes, ...notFoundRoutes];
+            },
+            getRouteComponent: options => (
+              options.route.main ||
+              (
+                options.route.getRouteComponent &&
+                options.route.getRouteComponent(options)
+              )
+            ),
+            routes: Routes,
+          })}
         </main>
 
         <Footer />

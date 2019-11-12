@@ -2,7 +2,7 @@ import en from './locales/en.json';
 
 /**
  * Get localization resources.
- * 
+ *
  * Exposed as a hook to prevent access outside of React tree,
  * since localization can be loaded and updated dynamically in the future.
  */

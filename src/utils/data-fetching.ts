@@ -1,13 +1,13 @@
 import React from 'react';
 
 type Options<Value> = {
-  fetch: () => Promise<Value>,
-  initialValue: Value,
+  fetch: () => Promise<Value>;
+  initialValue: Value;
 };
 
 type FetcherState<Value> = {
-  loading: boolean,
-  value: Value,
+  loading: boolean;
+  value: Value;
 };
 
 export function useFetcher<Value>(options: Options<Value>): FetcherState<Value> {

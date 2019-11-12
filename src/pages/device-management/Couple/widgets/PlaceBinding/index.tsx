@@ -22,7 +22,7 @@ import Typography from '@material-ui/core/Typography';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  idPrefix?: string,
+  idPrefix?: string;
 }
 
 const PlaceBinding: React.FC<Props> = (props) => {

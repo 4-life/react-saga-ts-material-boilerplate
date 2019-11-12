@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onFetchDevices: () => {
       return dispatchAsync<
-        ReturnType<typeof searchDevices>,
-        Device[] | undefined
+      ReturnType<typeof searchDevices>,
+      Device[] | undefined
       >(searchDevices())
         .then(res => res || array);
     },

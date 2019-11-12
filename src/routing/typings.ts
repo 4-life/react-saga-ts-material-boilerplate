@@ -7,7 +7,7 @@ export type Route = {
   path?: string;
   label?: string;
   nonLinkBreadcrumb?: boolean;
-  renderBreadcrumb?: BreadcrumbRenderer,
+  renderBreadcrumb?: BreadcrumbRenderer;
   icon?: string;
   main?: ComponentType;
   getRouteComponent?: RouteComponentGetter;

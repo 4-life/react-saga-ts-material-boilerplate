@@ -29,7 +29,7 @@ import { FieldSkeleton } from '../../../../../components/Skeleton';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  loading: boolean,
+  loading: boolean;
 }
 
 const ITEMS = [...new Array(10)].map(() => {

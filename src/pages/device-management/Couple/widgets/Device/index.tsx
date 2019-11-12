@@ -19,10 +19,10 @@ import DeviceOperations from '../DeviceOperations';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device?: DeviceModel,
-  idPrefix?: string,
-  loading: boolean,
-};
+  device?: DeviceModel;
+  idPrefix?: string;
+  loading: boolean;
+}
 
 const Device: React.FC<Props> = (props) => {
   const infoCss = useInfoBlockStyles();

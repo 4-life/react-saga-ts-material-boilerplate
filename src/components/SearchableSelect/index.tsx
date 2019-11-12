@@ -2,8 +2,8 @@ import MuiDownshift, { MuiDownshiftProps } from 'mui-downshift';
 import React from 'react';
 
 interface Option {
-  label: string,
-  value: string,
+  label: string;
+  value: string;
 }
 
 type Props = MuiDownshiftProps<Option>;

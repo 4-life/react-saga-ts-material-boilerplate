@@ -26,9 +26,9 @@ import { FieldSkeleton } from '../../../../../components/Skeleton';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  place?: Place,
-  idPrefix?: string,
-};
+  place?: Place;
+  idPrefix?: string;
+}
 
 const BATCH_ID = faker.address.city();
 

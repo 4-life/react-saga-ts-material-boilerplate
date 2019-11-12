@@ -6,22 +6,22 @@ export const FETCH_DEVICES_FAILURE = 'FETCH_DEVICES_FAILURE';
 export const SEARCH_DEVICES = 'SEARCH_DEVICES';
 
 export interface FetchDevices {
-  type: typeof FETCH_DEVICES,
-  payload: Device['device_id'][],
+  type: typeof FETCH_DEVICES;
+  payload: Device['device_id'][];
 }
 
 export interface FetchDevicesSuccess {
-  type: typeof FETCH_DEVICES_SUCCESS,
-  payload: { [id: string]: Device | null },
+  type: typeof FETCH_DEVICES_SUCCESS;
+  payload: { [id: string]: Device | null };
 }
 
 export interface FetchDevicesFailure {
-  type: typeof FETCH_DEVICES_FAILURE,
-  payload: string,
+  type: typeof FETCH_DEVICES_FAILURE;
+  payload: string;
 }
 
 export interface SearchDevices {
-  type: typeof SEARCH_DEVICES,
+  type: typeof SEARCH_DEVICES;
 }
 
 export function fetchDevices(ids: Device['device_id'][]): FetchDevices {

@@ -15,11 +15,11 @@ export type RouteComponentGetter =
   RouteConfig['component'];
 
 type Options = {
-  extraProps?: any,
-  getChildRoutes?: ChildRoutesGetter,
-  getRouteComponent?: RouteComponentGetter,
-  routes: RouteConfig[] | undefined,
-  switchProps?: SwitchProps,
+  extraProps?: any;
+  getChildRoutes?: ChildRoutesGetter;
+  getRouteComponent?: RouteComponentGetter;
+  routes: RouteConfig[] | undefined;
+  switchProps?: SwitchProps;
 };
 
 const getChildRoutesDefault: ChildRoutesGetter = (route) => {
@@ -28,7 +28,7 @@ const getChildRoutesDefault: ChildRoutesGetter = (route) => {
 
 const getRouteComponentDefault: RouteComponentGetter = (options) => {
   return options.route.component;
-}
+};
 
 /**
  * It's similar to `react-router-config`'s `renderRoutes()` with a few differences:

@@ -14,13 +14,13 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import Link from '../../../components/Link';
 
 type Props = {
-  places: Place[],
-  placesLoading: boolean,
+  places: Place[];
+  placesLoading: boolean;
 };
 
 const Places: React.FC<Props> = (props) => {
   const t = useLocalization();
-  
+
   if (props.placesLoading) {
     return (
       <>
@@ -29,7 +29,7 @@ const Places: React.FC<Props> = (props) => {
       </>
     );
   }
-  
+
   if (!props.places.length) {
     return (
       <Typography variant="h3">

@@ -8,8 +8,8 @@ const DEVICE_ID_PARAM_NAME = 'deviceId';
 const PLACE_ID_PARAM_NAME = 'placeId';
 
 export interface CoupleRouteParams {
-  [DEVICE_ID_PARAM_NAME]?: string,
-  [PLACE_ID_PARAM_NAME]?: string,
+  [DEVICE_ID_PARAM_NAME]?: string;
+  [PLACE_ID_PARAM_NAME]?: string;
 }
 
 export const devicePath =

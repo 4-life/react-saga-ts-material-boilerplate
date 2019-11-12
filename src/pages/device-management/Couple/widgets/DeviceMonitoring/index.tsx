@@ -18,8 +18,8 @@ import { FieldSkeleton } from '../../../../../components/Skeleton';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device?: Device,
-};
+  device?: Device;
+}
 
 const DeviceMonitoring: React.FC<Props> = (props) => {
   const { device } = props;

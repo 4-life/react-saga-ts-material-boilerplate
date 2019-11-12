@@ -4,8 +4,8 @@ import * as devices from './devices';
 import * as places from './places';
 
 export interface State {
-  [devices.name]: devices.State,
-  [places.name]: places.State,
+  [devices.name]: devices.State;
+  [places.name]: places.State;
 }
 
 export const name = 'deviceManagement';

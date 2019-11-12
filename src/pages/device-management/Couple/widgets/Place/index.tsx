@@ -16,10 +16,10 @@ import PlaceGeneralInfo from '../PlaceGeneralInfo';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  place?: PlaceModel,
-  idPrefix?: string,
-  loading: boolean,
-};
+  place?: PlaceModel;
+  idPrefix?: string;
+  loading: boolean;
+}
 
 const Place: React.FC<Props> = (props) => {
   const infoCss = useInfoBlockStyles();

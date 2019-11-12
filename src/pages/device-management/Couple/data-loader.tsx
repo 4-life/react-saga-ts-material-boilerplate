@@ -10,8 +10,8 @@ import { Device, Place, isPlaceId } from '../../../models';
 import CouplePage, { Props as ComponentProps } from './component';
 
 type PlaceInitHandlerOptions = {
-  deviceId?: Device['device_id'],
-  placeId: Place['id'],
+  deviceId?: Device['device_id'];
+  placeId: Place['id'];
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,8 +28,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export type Props = ComponentProps & {
-  deviceId?: Device['device_id'],
-  placeId?: Place['id'],
+  deviceId?: Device['device_id'];
+  placeId?: Place['id'];
 };
 
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
@@ -85,7 +85,7 @@ const CoupleDataLoader: React.FC<Props & DispatchProps> = (props) => {
     props.deviceLoading ||
     !deviceIdInited
   );
-  
+
   const placeLoadingOrAboutToStartLoading = (
     props.placeLoading ||
     !placeIdInited
@@ -101,7 +101,7 @@ const CoupleDataLoader: React.FC<Props & DispatchProps> = (props) => {
 };
 
 /* eslint-disable no-unexpected-multiline */
-export default connect/*<
+export default connect/* <
   {},
   typeof mapDispatchToProps,
   Props

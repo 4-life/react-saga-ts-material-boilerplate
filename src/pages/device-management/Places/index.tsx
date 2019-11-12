@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onFetchPlaces: () => {
       return dispatchAsync<
-        ReturnType<typeof searchPlaces>,
-        Place[] | undefined
+      ReturnType<typeof searchPlaces>,
+      Place[] | undefined
       >(searchPlaces())
         .then(res => res || array);
     },

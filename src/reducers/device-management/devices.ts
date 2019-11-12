@@ -5,13 +5,13 @@ import { Device } from '../../models';
 export const name = 'devices';
 
 interface Devices {
-  readonly [deviceId: string]: Device | null,
+  readonly [deviceId: string]: Device | null;
 }
 
 export interface State {
-  readonly entries: Readonly<Devices>,
-  readonly error: string | null,
-  readonly fetching: boolean,
+  readonly entries: Readonly<Devices>;
+  readonly error: string | null;
+  readonly fetching: boolean;
 }
 
 const initialState: State = {

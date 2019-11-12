@@ -25,13 +25,13 @@ import CouplePage, { Props as ComponentProps } from './data-loader';
 type Props = ComponentProps & RouteComponentProps<CoupleRouteParams>;
 
 interface Couple {
-  device?: DeviceModel,
-  place?: PlaceModel,
+  device?: DeviceModel;
+  place?: PlaceModel;
 }
 
 interface CoupleParams {
-  deviceId?: DeviceModel['device_id'] | null,
-  placeId?: PlaceModel['id'] | null,
+  deviceId?: DeviceModel['device_id'] | null;
+  placeId?: PlaceModel['id'] | null;
 }
 
 function mapRouteParamToPlaceId(placeIdParam?: string) {
@@ -88,12 +88,12 @@ function getCouple(coupleParams: CoupleParams, state): Couple {
 }
 
 interface StateProps {
-  device?: DeviceModel,
-  deviceId?: DeviceModel['device_id'],
-  deviceLoading: boolean,
-  place?: PlaceModel,
-  placeId?: PlaceModel['id'],
-  placeLoading: boolean,
+  device?: DeviceModel;
+  deviceId?: DeviceModel['device_id'];
+  deviceLoading: boolean;
+  place?: PlaceModel;
+  placeId?: PlaceModel['id'];
+  placeLoading: boolean;
 }
 
 type OwnProps = Omit<Props, keyof StateProps>;

@@ -8,7 +8,7 @@ import {
 import { Place } from '../../models';
 
 interface Places {
-  readonly [id: string]: Place | null,
+  readonly [id: string]: Place | null;
 }
 
 export interface State {

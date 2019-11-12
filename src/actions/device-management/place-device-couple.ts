@@ -5,21 +5,21 @@ export const FETCH_PLACE_DEVICE_SUCCESS = 'FETCH_PLACE_DEVICE_SUCCESS';
 export const FETCH_PLACE_DEVICE_FAILURE = 'FETCH_PLACE_DEVICE_FAILURE';
 
 export interface FetchPlaceDevice {
-  type: typeof FETCH_PLACE_DEVICE,
-  payload: Place['id'],
+  type: typeof FETCH_PLACE_DEVICE;
+  payload: Place['id'];
 }
 
 export interface FetchPlaceDeviceSuccess {
-  type: typeof FETCH_PLACE_DEVICE_SUCCESS,
+  type: typeof FETCH_PLACE_DEVICE_SUCCESS;
   payload: {
-    device: Device | null,
-    placeId: Place['id'],
-  },
+    device: Device | null;
+    placeId: Place['id'];
+  };
 }
 
 export interface FetchPlaceDeviceFailure {
-  type: typeof FETCH_PLACE_DEVICE_FAILURE,
-  payload: string,
+  type: typeof FETCH_PLACE_DEVICE_FAILURE;
+  payload: string;
 }
 
 export function fetchPlaceDevice(placeId: Place['id']): FetchPlaceDevice {

@@ -32,7 +32,7 @@ function fillDevice(device: Partial<Device>): Device {
     damaged_status: faker.random.boolean(),
     encryption_keys: [faker.random.uuid()],
     owner: faker.company.companyName(),
-  
+
     last_update_time: faker.date.past().toISOString(),
     last_firmware_update_time: faker.date.past().toISOString(),
     production_batch_id: faker.random.number(),

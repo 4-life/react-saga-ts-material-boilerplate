@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export interface Props {
-  device?: DeviceModel,
-  deviceLoading: boolean,
-  place?: PlaceModel,
-  placeLoading: boolean,
+  device?: DeviceModel;
+  deviceLoading: boolean;
+  place?: PlaceModel;
+  placeLoading: boolean;
 }
 
 const CouplePage: React.FC<Props> = (props) => {
@@ -41,7 +41,7 @@ const CouplePage: React.FC<Props> = (props) => {
   ) {
     return (
       <Typography variant="h4" className={homeCss.notImplemented}>
-        {t.deviceManagement.couple.notFound}      
+        {t.deviceManagement.couple.notFound}
       </Typography>
     );
   }

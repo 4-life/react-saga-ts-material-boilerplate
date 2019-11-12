@@ -29,10 +29,10 @@ export function renderBreadcrumbsEntries({ pathname }) {
         let crumbNode;
 
         type CommonProps = {
-          children: React.ReactNode,
-          color: 'textSecondary',
-          key: number,
-          variant: 'h6'
+          children: React.ReactNode;
+          color: 'textSecondary';
+          key: number;
+          variant: 'h6';
         };
 
         const commonProps: CommonProps = {

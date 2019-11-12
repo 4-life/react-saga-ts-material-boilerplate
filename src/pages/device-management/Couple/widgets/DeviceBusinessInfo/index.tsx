@@ -19,9 +19,9 @@ import { FieldSkeleton } from '../../../../../components/Skeleton';
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
 interface Props {
-  device?: Device,
-  idPrefix?: string,
-};
+  device?: Device;
+  idPrefix?: string;
+}
 
 const DeviceBusinessInfo: React.FC<Props> = (props) => {
   const { device } = props;

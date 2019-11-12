@@ -1,8 +1,4 @@
-import { AnyAction, Dispatch, Action } from 'redux';
-
-interface ActionWithMeta<Meta = any> extends Action {
-  meta: Meta;
-}
+import { AnyAction, Dispatch } from 'redux';
 
 type PromiseResolverMeta = {
   promise: {
@@ -11,16 +7,19 @@ type PromiseResolverMeta = {
   };
 };
 
-export type ActionWithPromise<A = AnyAction> = A & {
-  meta: A extends ActionWithMeta
-    ? A['meta'] & PromiseResolverMeta
+export type ActionWithPromise<Action> = Action & {
+  meta: Action extends Record<'meta', {}>
+    ? Action['meta'] & PromiseResolverMeta
     : PromiseResolverMeta;
 };
 
 export function createAsyncDispatch(dispatch: Dispatch) {
-  function dispatchAsync<A extends AnyAction, T = any>(action: A): Promise<T> {
+  function dispatchAsync<
+    Action extends AnyAction,
+    Result
+  >(action: Action): Promise<Result> {
     return new Promise((resolve, reject) => {
-      const nextAction: ActionWithPromise<A> = {
+      const nextAction: ActionWithPromise<Action> = {
         ...action,
         meta: {
           ...action.meta,

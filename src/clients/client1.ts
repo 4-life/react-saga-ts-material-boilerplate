@@ -58,6 +58,8 @@ function fetchAllDevices(): Promise<FetchAllDevicesResponse> {
     .then((res) => res.json());
 }
 
+// The action will be in use after the transition to a real-world API
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const fetchDevices = (action: FetchDevices): Promise<FetchDevicesResponse> => {
   return fetchAllDevices()
     .then((res) => {
@@ -109,6 +111,8 @@ function fillPlace(place: Partial<Place>): Place {
   };
 }
 
+// The action will be in use after the transition to a real-world API
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const fetchPlaces = (action: GetPlaces): Promise<FetchPlacesResponse> => {
   return fetchAllPlaces()
     .then((res) => ({

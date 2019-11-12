@@ -15,6 +15,14 @@ export type RouteComponentGetter =
   RouteConfig['component'];
 
 type Options = {
+  /**
+   * `extraProps`, `RouteConfig['component']`, and `RouteConfig['render']`
+   * aren't well-typed within "react-router-config"
+   * TODO: provide more precise type definitions there?
+   *
+   * @see [DefinitelyTyped typedefs](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/14083509a108e97cd7f2966ae470cb9a336643de/types/react-router-config/index.d.ts#L39)
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extraProps?: any;
   getChildRoutes?: ChildRoutesGetter;
   getRouteComponent?: RouteComponentGetter;

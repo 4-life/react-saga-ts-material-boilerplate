@@ -48,6 +48,13 @@ export const routes: Route[] = [
         getRouteComponent: (options) => options.match.isExact ? Places : undefined,
         routes: [
           {
+            /**
+             * `placePath` normally accepts a place ID (number) in order
+             * to create a meaningful URL. However, here we're going to reuse it
+             * to configure the router, so string argument is nessessary,
+             * which is definitely a one-time exception of the rule.
+             */
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             path: placePath(`:${PLACE_ID_PARAM_NAME}` as any),
             main: Couple,
             renderBreadcrumb({ match }) {

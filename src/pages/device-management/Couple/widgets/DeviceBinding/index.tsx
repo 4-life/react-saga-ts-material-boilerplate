@@ -19,7 +19,7 @@ import SearchableSelect from '../../../../../components/SearchableSelect';
 // styles
 import { useInfoBlockStyles } from '../InfoBlock/style';
 
-interface Props {}
+type Props = {};
 
 const ITEMS = [...new Array(10)].map(() => {
   const id = faker.random.alphaNumeric(8);

@@ -19,7 +19,7 @@ export interface Place {
   device_id?: DeviceId | null;
 }
 
-export function isPlaceId(x) {
+export function isPlaceId(x: any): x is Place['id'] {
   return typeof x === 'number';
 }
 

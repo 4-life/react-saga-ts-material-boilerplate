@@ -81,7 +81,7 @@ function getCouple(coupleParams: CoupleParams, state): Couple {
     ),
     place: (
       isPlaceId(placeId)
-        ? (getPlace(placeId as PlaceModel['id'], state) || undefined)
+        ? (getPlace(placeId, state) || undefined)
         : undefined
     ),
   };
@@ -112,7 +112,7 @@ function mapStateToProps(state: State, props: OwnProps): StateProps {
     ),
     placeId: (
       isPlaceId(coupleParams.placeId)
-        ? coupleParams.placeId as PlaceModel['id']
+        ? coupleParams.placeId
         : undefined
     ),
 

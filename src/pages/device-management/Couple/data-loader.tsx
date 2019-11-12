@@ -75,8 +75,8 @@ const CoupleDataLoader: React.FC<Props & DispatchProps> = (props) => {
         return;
       }
 
-      onInitPlace({ deviceId, placeId: placeId as Place['id'] });
-      setPlaceInited(placeId as Place['id']);
+      onInitPlace({ deviceId, placeId });
+      setPlaceInited(placeId);
     },
     [deviceId, placeId, placeIdInited, onInitPlace, setPlaceInited],
   );

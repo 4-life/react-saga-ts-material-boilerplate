@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { searchPlaces } from '../../../actions/dummy-data';
+import { searchPlaces, SearchPlaces } from '../../../actions/dummy-data';
 import { Place } from '../../../models';
 import { useFetcher } from '../../../utils/data-fetching';
 import { createAsyncDispatch } from '../../../utils/store';
@@ -16,10 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     onFetchPlaces: () => {
-      return dispatchAsync<
-      ReturnType<typeof searchPlaces>,
-      Place[] | undefined
-      >(searchPlaces())
+      return dispatchAsync<SearchPlaces, Place[] | undefined>(searchPlaces())
         .then(res => res || array);
     },
   };

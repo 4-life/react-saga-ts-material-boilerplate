@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { searchDevices } from '../../../actions/device-management/devices';
+import {
+  searchDevices,
+  SearchDevices,
+} from '../../../actions/device-management/devices';
 import { Device } from '../../../models';
 import { useFetcher } from '../../../utils/data-fetching';
 import { createAsyncDispatch } from '../../../utils/store';
@@ -16,10 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     onFetchDevices: () => {
-      return dispatchAsync<
-      ReturnType<typeof searchDevices>,
-      Device[] | undefined
-      >(searchDevices())
+      return dispatchAsync<SearchDevices, Device[] | undefined>(searchDevices())
         .then(res => res || array);
     },
   };

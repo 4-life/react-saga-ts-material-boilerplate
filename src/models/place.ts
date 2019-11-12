@@ -22,11 +22,3 @@ export interface Place {
 export function isPlaceId(x: any): x is Place['id'] {
   return typeof x === 'number';
 }
-
-export function formatPlaceName(place: Place) {
-  if (!place.custom_id) {
-    return `#${place.id}`;
-  }
-
-  return `#${place.id} / ${place.custom_id}`;
-}

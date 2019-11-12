@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatPlaceName, Place } from '../../../models';
+import { Place } from '../../../models';
 import { placePath } from '../../../routing/routes/device-management';
 import { useLocalization } from '../../../utils/localization';
 
@@ -12,6 +12,14 @@ import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import Link from '../../../components/Link';
+
+function formatPlaceName(place: Place) {
+  if (!place.custom_id) {
+    return `#${place.id}`;
+  }
+
+  return `#${place.id} / ${place.custom_id}`;
+}
 
 type Props = {
   places: Place[];
